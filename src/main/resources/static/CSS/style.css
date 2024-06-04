@@ -1,0 +1,251 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+}
+
+main{
+    background-image: linear-gradient(black, gray)
+}
+
+
+nav li{
+    display: inline-block;
+    font-size: 18px;
+    width: 180px;
+    text-align: center;
+    margin-right: 5px
+
+}
+
+nav li a{
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 30px;
+    width: 180px;
+
+    }
+
+nav li a:hover{
+    background-color: black;
+    color: white;
+    text-decoration: underline;
+}
+
+.dropdown-menu{
+    position: absolute;
+    display: none;
+    font-size: 20px;
+    margin: 0px;
+    width: 180px;
+    
+}
+
+.dropdown img{
+    width: 50px;
+    height: 50px;
+}
+
+.dropdown-menu a{
+    display: block;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+h1{
+    font-family: 'Cloister Black', sans-serif;
+    text-align: center;
+    font-size: 100px;                                  
+}
+
+#titulo-1{
+    margin-top: 0;
+    color: white;
+}
+
+.parte1{
+    display: flex;
+    justify-content: center;
+}
+
+.parte1 img{
+    margin-right: 30%;
+    height: 350px;
+    margin-top: 30px;
+}
+
+.parte1 h2{
+    text-align: center;
+}
+
+.texto{
+    width: 400px;
+    position: absolute;
+    margin-left: 30%;
+    font-size: 22px;
+    color: white;
+}
+
+
+
+.loja h1{
+    font-family: 'Great Vibes', sans-serif;
+    font-size: 100px;
+    margin-bottom: -50px;           
+}
+
+.loja{
+    margin-top: 140px;
+    text-align: center;
+}
+
+.loja h2{
+    font-family: 'Cloister Black', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    margin-bottom: -1px;         
+}
+
+.loja img{
+    width: 230px;
+    height: 230px;
+    margin: 40px;
+
+}
+
+.produtos{
+    display: flex;
+    justify-content: center;
+}
+
+.produtos p{
+    font-size: 22px;
+}
+
+.produtos h4{
+    color: white;
+    font-size: 25px;
+    text-decoration: underline;
+    margin-top: -30px;
+}
+
+.produtos p{
+    font-size: 24px;
+    color: black;
+    font-weight:bold;
+    margin-top: -25px;
+}
+
+.produtos a{
+    text-decoration: none;
+}
+
+
+#estrela{
+    width: 130px;
+    height: 40px;
+    margin-top: -25px;
+}
+
+
+.mais-produtos{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 150px;
+}
+
+
+.mais-produtos h2, .mais-profissionais h2, .orcamentos h2{
+    padding: 15px;
+    color: white;
+    border: 3px solid;
+    border-radius: 25px;
+    background: #333333;
+    width: 300px;
+    text-align: center;
+    margin-top: -15;
+
+}
+
+.mais-produtos a, .mais-profissionais a, .orcamentos a{
+    text-decoration: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.profissionais{
+    display: flex;
+    justify-content: center;
+}
+
+#h2-prof{
+    font-family: 'Cloister Black', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.profissionais img{
+    width: 200px;
+    height: 200px;
+    border: 5px solid black;
+    padding: 10px;
+    margin: 20px;
+}
+
+.profissionais p, a{
+    text-align: center;
+    font-size: 30px;
+    color: black;
+    margin-top: -5px;
+    text-decoration: none;
+}
+
+.mais-profissionais{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 150px;
+}
+
+
+.trabalhos h1{
+    font-family: 'Great Vibes', sans-serif;
+    font-size: 70px;   
+}
+
+.trabalhos h2{
+    font-family: 'Cloister Black', sans-serif;
+    font-size: 150px;
+    text-align: center;
+    margin-top: -90px;
+    margin-bottom: 5px;
+}
+
+.fotos-tattoo-1, .fotos-tattoo-2{
+    display: flex;
+    justify-content: center;
+
+}
+
+.fotos-tattoo-1 img, .fotos-tattoo-2 img{
+    width: 350px;
+    height: 450px;
+    margin: 10px;
+}
+
+.fotos-tattoo-2{
+    margin-top: 50px;
+}
+
+
+.orcamentos{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}

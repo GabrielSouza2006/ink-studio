@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th"http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="/CSS/paginaprincipal.css"/>
+    <link rel="stylesheet" href="/CSS/cabeca-rodape.css"/>
+
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/cloister-black');
+        @import url('https://fonts.cdnfonts.com/css/great-vibes');
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="menu">
+
+            <div class="logo-cabecalho">
+                <a href="Home.html">
+                    <img src="/imagens/LogoINK.png" style="height: 120px; width: 120px; border-radius: 50%;"></a>
+                <p class="plogo">O melhor site de tatuagem do Brasil!</p>
+            </div>
+
+            <div class="links">
+                <a href="Home.html">Home</a>
+                <a href="Loja.html">Loja</a>
+                <a href="orcamentos.html">Orçamentos</a>
+
+                <div class="redes">
+                    <a href="https://www.instagram.com">
+                        <img src="/imagens/insta.png" width="50px" height="50px"></a>
+
+                    <a href="https://www.facebook.com">
+                        <img src="/imagens/face.png" width="50px" height="50px"></a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="esquerda">
+            <h2>Seja bem-vindo(a),</h2>
+            
+
+            <div class="itens1">
+                <a href="chat.html"><img src="/imagens/chat.png"></a>
+                <a href="chat.html">
+                    <h4 id="chat">Chat</h4>
+                </a>
+
+                <a href="Agenda.html"><img src="/imagens/agenda.png"></a>
+                <a href="Agenda.html">
+                    <h4 id="agenda">Agenda</h4>
+                </a>
+            </div>
+
+            <div class="itens2">
+                <a href="Loja.html"><img src="/imagens/loja.png"></a>
+                <a href="Loja.html">
+                    <h4 id="loja">Loja</h4>
+                </a>
+
+                <a href="orcamentos.html"><img src="/imagens/orcamento.png" id="orc"></a><a href="#"></a>
+                <a href="orcamentos.html">
+                    <h4 id="orcamento">Orçamento</h4>
+                </a>
+            </div>
+
+            <div class="logoff">
+                <a href="Login.html"><img src="/imagens/logoff.png"></a>
+                <a href="Login.html">
+                    <h4>Logoff</h4>
+                </a>
+            </div>
+        </div>
+
+        <div class="logo">
+            <img src="/imagens/LogoINK.png">
+        </div>
+
+        <div class="opcoes">
+            <div class="primeira">
+                <h2>Conheça nossos</h2>
+                <button>Profissionais</button>
+            </div>
+
+            <div class="segunda" th:each="usuario: ${usuario}">
+                <h2>Edite seu</h2>
+                <a th:href="@{'/inkstudiotattoo/usuario/alterar/' + ${usuario.id}}"><button style="width: 120px; margin-left: -2px;">Perfil</button></a>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <article class="rodape">
+            <p class="inf-contato">Email: inkstudiotattoo@gmail.com<br>
+                Tel: +55 11 3242-2345 <br>
+                <a href="#" id="suporte-link">Suporte</a>
+            </p>
+
+            <p class="inf-local">Local: R. Interna Grupo Bandeirante, 2956-3006 - Jardim Belval<br> <br>
+                Estamos abertos de segunda a sexta das 8:00h ás 19:00h <br> e aos sábados das 8:00h ás 16:00h</p>
+        </article>
+    </footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.conteudo-principal{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    max-width: 100vw;
+    width: 1500px;
+}
+
+.esquerda h2{
+    display: inline;
+    font-family: 'Cloister Black', sans-serif;
+    color: white;
+    font-size: 50px;
+    margin-left: 12%;
+    margin-right: 10px;
+
+}
+
+.esquerda p{
+    display: inline;
+    font-size: 30px;
+    font-style: italic;
+    color: white;
+}
+
+.esquerda{
+    margin-right: 300px;
+}
+
+.itens1{
+    display: flex;
+    margin-top: 60px;
+    margin-bottom: 100px;
+    justify-content: center;
+}
+
+
+.itens2{
+    display: flex;
+    justify-content: center;
+}
+
+
+.itens1 img, .itens2 img{
+    height: 150px;
+    width: 150px;
+    margin-right: 130px;
+    margin-left: 20px;
+}
+
+
+.itens1 a, .itens2 a{
+text-decoration: none;
+}
+
+.itens1 h4, .itens2 h4{
+    color: white;
+    font-size: 25px;
+    margin-top: 160px;
+    margin-left: -230px;
+}
+
+
+#agenda{
+    margin-left: -245px;
+
+}
+
+#loja{
+    margin-left: -225px;
+}
+
+#orcamento{
+    margin-left: -260px;
+}
+
+.itens2 img{
+    margin-left: 10px;
+}
+
+.logo{
+    width: 500px;
+    margin-top: 40px;
+}
+
+.logoff{
+    width: 150px;
+}
+
+.logoff img{
+    width: 45px;
+    height: 45px;
+    margin-top: 60px;
+    margin-left: 10px;
+}
+
+.logoff h4{
+    display: flex;
+    font-size: 25px;
+    margin-top: -45px;
+    margin-left: 60px;
+}
+
+.logoff a{
+    text-decoration: none;
+    color: white;
+}
+
+
+button{
+    background: black;
+    color: white;
+    padding: 16px;
+    font-size: 22px;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin-left: 250px;
+    cursor: pointer;
+    margin-top: 100px;
+    font-style: italic
+    
+}
+
+

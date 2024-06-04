@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+}
+
+body{
+    background: #1A1A1A;
+    overflow-x: hidden;
+}
+
+
+.esquerda{
+    width: 65%;
+    height: 750px;
+}
+
+.direita{
+    float: right;
+    width: 35%;
+    height: 750px;
+    margin-top: -750px;
+}
+
+.esquerda #seta{
+    width: 40px;
+    height: 40px;
+    border: 5px solid white;
+    border-radius: 50%;
+    padding: 10px;
+    padding-right: 14px;
+}
+
+.esquerda #foto-tatu{
+    width: 150px;
+    height: 150px;
+    margin-top: 10px;
+}
+
+.tattoo{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    width: 600px;
+    margin-top: -75px;
+    margin-left: 200px;
+}
+
+.tattoo p{
+    color: white;
+    font-size: 26px;
+    margin-top: 70px;
+}
+
+.bolinha{
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 50%;
+    margin-top: 70px;
+    margin-left: 10px;
+}
+
+.chat{
+    width: 600px;
+    margin-left: 200px;
+    margin-top: 100px;
+    text-align: center;
+
+}
+
+.chat img{
+    width: 100px;
+    height: 100px;
+}
+
+
+.chat p{
+    width: 350px;
+    margin-left: 140px;
+    color: white;
+    font-size: 24px;
+}
+
+
+.msg{
+    display: flex;
+    align-items: flex-end;
+}
+
+input{
+    margin-top: 200px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 40px;
+    width: 750px;
+}
+
+#enviar{
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin-left: -90px;
+    margin-bottom: 3px;
+}
+
+
+.direita{
+display: flex;
+
+}
+
+
+.direita img{
+    width: 100px;
+    height: 100px;
+    margin-left: 25%;
+    margin-top: 20px;
+}
+
+.direita #p1{
+    width: 350px;
+    margin-left: 15px;
+    margin-top: 60px;
+    color: white;
+    font-size: 24px;
+}
+
+
+#p2{
+    width: 600px;
+    height: 40px;
+    color: white;
+    font-size: 24px;
+    position: absolute;
+    top: 200px;
+    text-align: center;
+}
+
+.opcoes{
+
+    position: absolute;
+    top: 300px;
+    width: 35%;
+    height: 450px;
+}
+
+.opcoes img{
+width: 80px;
+height: 80px;
+margin-left: 0;
+
+}
+
+.opcoes p{
+    font-size: 22px;
+    color: white;
+    margin-left: 10px;
+
+}
+
+.opc1{
+    display: flex;
+}
+
+.opc1 p{
+    margin-top: 45px;
+}
+
+.opc2{
+    display: flex;
+}
+
+
+.opc2 p{
+    margin-top: 45px;
+}
+
+.opc3{
+    display: flex;
+}
+
+.opc3 p{
+    margin-top: 45px;
+}
+
+.opc4{
+    display: flex;
+}
+
+.opc4 p{
+    margin-top: 45px;
+}
+
+.opc2 img, .opc3 img, .opc4 img{
+    margin-left: 7px;
+}
+
+
+
+hr{
+    margin-bottom: -20px;
+}
+
+
+.opcoes a{
+    text-decoration: none;
+}
