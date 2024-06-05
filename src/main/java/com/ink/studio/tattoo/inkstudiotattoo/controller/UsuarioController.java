@@ -1,43 +1,49 @@
 package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
-import com.ink.studio.tattoo.inkstudiotattoo.model.UsuarioDTO;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
+import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
 
 @Controller
-@RequestMapping("/inkstudiotattoo/usuarios")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
 	@Autowired
-	UsuarioRepository ur;
+	UsuarioRepository usuarioRepository;
+	UsuarioService usuarioService;
 
 	// carregar as páginas referente ao usuário
 	@RequestMapping("/listar")
 	public ModelAndView  listarUsuario() {
 		
 		ModelAndView mv = new ModelAndView("index");
-		Iterable<Usuario> usuario = ur.findAll();
+		Iterable<Usuario> usuario = usuarioRepository.findAll();
 		mv.addObject("usuario", usuario);
 		
 		return mv;
 	}
-
 	
 	// --------------------------Carregar o formulário de cadastro do usuário (método)--------------------------
-	@GetMapping("/novo-usuario")
-	public String novoUsuario() {
+	@GetMapping("/cadastro")
+	public String cadastro() {
+		
+		return "cadastro";
+	}
+	
+	@PutMapping("/cadastro")
+	public String gravarUsuario() {
+		
+		
+		
 		return "cadastro";
 	}
 
@@ -46,7 +52,7 @@ public class UsuarioController {
 	@PostMapping("/novo-usuario")
 	public String gravarNovoUsuario(Usuario usuario) {
 
-		ur.save(usuario);	
+		usuarioRepository.save(usuario);	
 		
 		return "redirect:/inkstudiotattoo/usuarios/login";
 	}
@@ -62,7 +68,7 @@ public class UsuarioController {
 	@PostMapping("/alterar/{id}")
 	public String alterarUsuario(Usuario usuario) {
 		
-		ur.save(usuario);
+		usuarioRepository.save(usuario);
 		
 		return "redirect:/inkstudiotattoo/usuarios/listar";
 	}
@@ -71,7 +77,7 @@ public class UsuarioController {
 	@GetMapping("/deletar-usuario/{id}")
 	public String deletarUsuario(@PathVariable long id) {
 
-		ur.deleteById(id);
+		usuarioRepository.deleteById(id);
 			
 		return "redirect:/inkstudiotattoo/usuarios/login";
 	}
