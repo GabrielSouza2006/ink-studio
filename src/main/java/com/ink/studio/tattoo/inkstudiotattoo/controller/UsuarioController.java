@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
@@ -20,17 +19,6 @@ public class UsuarioController {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	UsuarioService usuarioService;
-
-	// carregar as páginas referente ao usuário
-	@RequestMapping("/listar")
-	public ModelAndView  listarUsuario() {
-		
-		ModelAndView mv = new ModelAndView("index");
-		Iterable<Usuario> usuario = usuarioRepository.findAll();
-		mv.addObject("usuario", usuario);
-		
-		return mv;
-	}
 	
 	// --------------------------Carregar o formulário de cadastro do usuário (método)--------------------------
 	@GetMapping("/cadastro")
@@ -42,8 +30,6 @@ public class UsuarioController {
 	@PutMapping("/cadastro")
 	public String gravarUsuario() {
 		
-		
-		
 		return "cadastro";
 	}
 
@@ -52,7 +38,7 @@ public class UsuarioController {
 	@PostMapping("/novo-usuario")
 	public String gravarNovoUsuario(Usuario usuario) {
 
-		usuarioRepository.save(usuario);	
+		usuarioRepository.save(usuario);
 		
 		return "redirect:/inkstudiotattoo/usuarios/login";
 	}

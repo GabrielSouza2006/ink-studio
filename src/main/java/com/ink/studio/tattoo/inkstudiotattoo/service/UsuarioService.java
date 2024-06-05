@@ -17,8 +17,6 @@ public class UsuarioService {
 	@PutMapping
 	public Usuario gravarUsuario(@RequestParam Usuario usuario) {
 		
-		
-		
 		return null;
 	}
 	
