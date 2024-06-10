@@ -7,9 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name="Usuario")
 public class Usuario {
+	
 	@Id //PK
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto incremento do SQL Server
 	@Column(name = "id")
@@ -63,15 +66,5 @@ public class Usuario {
 	}
 	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
-	}
-	public static Usuario setUsuarioDto(UsuarioDTO usuariodto, Usuario usuario) {
-		
-		return null;
-	}
-	
-	public void setUsuarioDTO(UsuarioDTO usuarioDTO) {
-		this.nome = usuarioDTO.getNome();
-		this.email = usuarioDTO.getEmail();
-		this.telefone = usuarioDTO.getTelefone();
 	}
 }

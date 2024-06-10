@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th"http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -45,23 +45,26 @@
 
     <section>
 
-        <form method="post">
+        <form th:action="@{/usuarios/cadastro}" th:object="${usuario}" method="post">
             <h2>Cadastra-se</h2>
             <label>Digite seu nome:</label>
-            <input name="nome" type="text" autocomplete="off" required placeholder="Insira seu nome">
+            <input name="nome" th:text="${nome}" type="text" required placeholder="Insira seu nome">
 
             <label>Digite seu email:</label>
-            <input name="email" type="email" autocomplete="off" required placeholder="Insira seu email">
+            <input name="email" th:text="${email}" type="email" required placeholder="Insira seu email">
+
+            <label>Digite seu telefone:</label>
+            <input name="telefone" th:text="${telefone}" type="text" required placeholder="Insira seu telefone">
 
             <label>Data de nascimento:</label>
-            <input name="nascimento" type="text" autocomplete="off" placeholder="12/12/2000" required>
+            <input name="nascimento" th:text="${nascimento}" type="text" placeholder="12/12/2000" required>
 
             <label>Digite seu CPF:</label>
-            <input name="cpf" type="text" autocomplete="off" pattern="[0-9]{11}"
+            <input name="cpf" th:text="${cpf}" type="text" pattern="[0-9]{11}"
                 title="Somente números e com 11 digitos" placeholder="12345678906" required>
 
             <label>Crie uma senha forte:</label>
-            <input name="senha" type="password" autocomplete="off" required>
+            <input name="senha" th:text="${senha}" type="password" required>
 
             <div class="botoes">
                 <a href="Login.html"><button type="button">Voltar</button></a>
