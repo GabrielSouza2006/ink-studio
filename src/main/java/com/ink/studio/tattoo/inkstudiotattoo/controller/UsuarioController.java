@@ -1,15 +1,13 @@
 package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
@@ -25,7 +23,7 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioService;
 
-	// Cadastro
+	// -------------------------- Cadastro --------------------------
 	@GetMapping("/cadastro")
 	public String cadastro() {
 
@@ -33,15 +31,38 @@ public class UsuarioController {
 	}
 
 	@PostMapping(path = "/cadastro", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ResponseEntity<Usuario> create(@ModelAttribute Usuario usuario) {
+	public String create(@ModelAttribute Usuario usuario) {
 
-		Usuario _usuario = usuarioService.gravarUsuario(usuario);
+		usuarioService.gravarUsuario(usuario);
 
-		return new ResponseEntity<Usuario>(_usuario, HttpStatus.OK);
+		return "redirect:/usuarios/login";
+	}
+	// -------------------------- Login --------------------------
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
 
-	// --------------------------Altarar Usuario--------------------------
-	@GetMapping("/alterar/{id}")
+	@PostMapping("/login")
+	public String efetuarLogin(Model model, Usuario usuario) {
+		Usuario user = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
+		if (user != null) {
+			return "redirect:/usuarios/pagina-principal";
+		}
+		model.addAttribute("erro", "usuario ou senha inválidos");
+		return "login";
+	}
+
+	// Página principal controller
+	@GetMapping("/pagina-principal")
+	public String paginaPrincipal() {
+
+		return "pagina-principal";
+	}
+
+	// -------------------------- Alterar Usuario --------------------------
+	@GetMapping("/alterar")
 	public String pag() {
 
 		return "editar-cliente";
