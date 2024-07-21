@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    background: #1A1A1A;
+}
+
+h2{
+    font-family: 'Cloister Black', sans-serif;
+    color: white;
+    font-size: 120px;
+    margin-left: 10%;
+}
+
+
+#voltar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    padding: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#logo{
+    width: 200px;
+    height: 200px;
+}
+
+.cima{
+    display: flex;
+    justify-content: space-between
+}
+
+
+table{
+    margin-left: 10%;
+    margin-top: 7%;
+    border: 3px solid white;
+    color:white;
+    text-align: center;
+}
+
+table tr{
+    height: 70px;
+    
+}
+
+table tr, input{
+    font-size: 25px;
+}
+
+table td, th{
+    border: 3px solid white
+
+}
+
+.criar{
+    display: flex;
+    color: white;
+    justify-content: flex-end;
+    margin-right: 200px;
+    font-size: 30px;
+    align-items: center;
+}
+
+.criar h3{
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.criar img{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.criar a{
+    text-decoration: none;
+    color: white;
+}

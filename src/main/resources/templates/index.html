@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th"http://thymeleaf.org">
+<html xmlns:th"http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <style>
 	body{
@@ -31,11 +32,10 @@
 
 	<h1>Users</h1>
 	<div class="dados" th:each="usuario: ${usuario}">
-	<p>id: <span th:text="${usuario.id}"></span></p>
-	<p>Nome: <span th:text="${usuario.nome}"></span></p>
-	<p>Email: <span th:text="${usuario.email}"></span></p>
-	<p>CPF: <span th:text="${usuario.cpf}"></span></p>
-	<a th:href="@{'/inkstudiotattoo/usuario/alterar/' + ${usuario.id}}"><button style="width: 120px; margin-left: -2px;">Perfil</button></a>
+	<p><span th:text="${usuario.id}"></span></p>
+	<p><span th:text="${usuario.nome}"></span></p>
+	<p><span th:text="${usuario.email}"></span></p>
+	<p><span th:text="${usuario.cpf}"></span></p>
 	</div>
 </body>
 </html>

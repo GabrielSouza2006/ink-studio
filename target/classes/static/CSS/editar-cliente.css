@@ -1,103 +1,163 @@
 *{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     background: #1A1A1A;
 }
 
-.principal {
+
+.container-editar-cliente{
     display: flex;
-}
-
-
-.avatar{
-    display: flex;
-    background: #1A1A1A;
-    width: 200px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#editar-foto{
-   margin-top: 190px;
-   width: 170px;
-   text-align: center;
-   margin-left: -185px;
-   font-family: Georgia, 'Times New Roman', Times, serif;
-   font-style: italic;
-   font-weight:bold ;
-    padding: 10px;
-    background: #333333;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     color: white;
-    border-radius: 12px;
-    border: 1px solid #333333;
-    cursor: pointer;
-}
-
-
-.seta-voltar a{
-    display: flex;
-    width: 80px;
-    height: 80px;
     margin-top: 20px;
-    margin-left: 30px;
-    cursor: pointer;
+    width: 35rem;
+    height: 80vh;
+    margin: 0 auto;
+    outline: 2px solid white;
+    border-radius: 10px;
 }
 
-.logo{
-    display: flex;
+
+.container-editar-cliente img{
     width: 200px;
     height: 200px;
 }
 
-.dados-cliente{
-    display: inline-block;
-    color: white;
-    align-self: center;
-    margin-top: 150px;
-    margin-left: 30px;
-}
-
-.dados-cliente h2{
-    display: inline;
-}
-
-.dados-cliente input{
+.container-editar-cliente img, button {
     margin-bottom: 20px;
-    margin-left: 5px;
-    width: 400px;
-    background: #333333;
-    color: white;
-    padding: 6px;
 }
 
-#concluir{
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px;
-    background: #333333;
-    color: white;
-    border-radius: 12px;
-    border: 1px solid #333333;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 24px;
-    margin-top: 100px;
+.container-editar-cliente h2{
+    margin-bottom: 2px;
+    font-size: 21px;
+}
+
+.container-editar-cliente button{
+    width: 200px;
+    padding: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-style: italic;
-    font-weight:bold 
+    font-weight:bold ;
+    background: #333333;
+    color: white;
+    border-radius: 6px;
+    border: 1px solid #333333;
+    cursor: pointer;
+}
 
+
+.container-editar-cliente input{
+    width: 400px;
+    background: #333333;
+    border: none;
+    color: white;
+    padding: 6px;
+    margin-bottom: 20px;
 }
 
 .link-button{
     text-decoration: none;
 }
 
-.bts{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+
+
+.flip-card {
+    background-color: transparent;
+    width: 245px;
+    height: 240px;
+    perspective: 1000px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card-front, .flip-card-back {
+    background-color: #1A1A1A;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-radius: 2em;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    border: 2px solid white;
+
+  }
+  
+  .profile-image {
+    background-color: transparent;
+    border: none;
+    margin-top: 10px;
+    border-radius: 5em;
+    width: 120px;
+    height: 120px;
+    margin-left: 50px;
+  }
+  
+  .pfp {
+    border-radius: 35em;
+    fill: white;
+  }
+  
+  .name {
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .flip-card-back {
+    background-color: #1A1A1A;
+    transform: rotateY(180deg);
+    padding: 11px;
+  }
+  
+  .description {
+    margin-top: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: white
+  }
+  
+  .socialbar {
+    background-color: transparent;
+    border-radius: 3em;
+    width: 90%;
+    padding: 14px;
+    margin-top: 2px;
+    margin-left: 10px;
+    word-spacing: 24px;
+    color: white;
+  }
+  
+  .socialbar svg {
+    transition: 0.4s;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .socialbar svg:hover {
+    color: white;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  

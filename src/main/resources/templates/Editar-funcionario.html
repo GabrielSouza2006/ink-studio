@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/cloister-black');
+        @import url('https://fonts.cdnfonts.com/css/great-vibes');
+    </style>
+
+    <link rel="stylesheet" href="./../CSS/Perfil.css">
+    <link rel="stylesheet" href="./css/cabeca-rodape.css">
+    <title>Perfil</title>
+</head>
+
+<body>
+    <header>
+        <nav class="menu" style="margin-bottom: 0;">
+            <a href="#"><img src="./../imagens/seta-voltar-com-traco.png" width="60px" height="60px"></a>
+
+            <ul>
+                <li class="dropdown">
+                    <a href=""><img src="./../imagens/menu.png"></a>
+    
+                    <div class="dropdown-menu">
+                        <a href="Cadastro.html" target="_self">Cadastro</a>
+                    <a href="Home.html" target="_self">Chat</a>
+                    <a href="Painel.html" target="_self">Carrinho</a>
+                    <a href="FaleConosco.html" target="_self">Fale conosco</a>
+                    </ul>
+            
+
+            <div class="logo">
+                <a href="Home.html">
+                    <img src="./../imagens/LogoINK.png" style="height: 120px; width: 120px; border-radius: 50%;"></a>
+                <p class="plogo">O melhor site de tatuagem do Brasil!</p>
+            </div>
+
+            <div class="links">
+                <div class="as">
+                <a href="Login.html">Login</a>
+                <a href="Loja.html">Loja</a>
+                <a href="#">Orçamentos</a>
+                </div>
+
+                <div class="redes">
+                    <div class="as2">
+                    <a href="https://www.instagram.com/">
+                        <img src="./../imagens/insta.png" width="50px" height="50px"></a>
+
+                    <a href="https://www.facebook.com">
+                        <img src="./../imagens/face.png" width="50px" height="50px"></a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="conteudo">
+            <div class="topo">
+                <div class="avatar">
+                    <img src="./../imagens/avatar.png" id="avatar">
+                    <div>
+                        <button type="button" id="editar-foto">Editar foto de perfil</button>
+                    </div>
+                </div>
+
+
+                <div class="logo">
+                    <img src="./../imagens/LogoINK.png" id="logo">
+                </div>
+
+            </div>
+
+
+            <div class="baixo">
+                <form action="">
+                    <h2>Nome:</h2><input type="text" placeholder="Insira seu nome"><br>
+                    <h2>Data de Nacimento:</h2><input type="date" placeholder="Insira sua data de nascimento"><br>
+                    <h2>Telefone:</h2><input type="tel" placeholder="Insira seu Telefone"
+                        pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" title="Utilize esse formato: (99) 9999-9999"><br>
+                    <h2>Email:</h2><input type="email" placeholder="Insira seu E-mail"><br>
+                    <h2>Descrição:</h2><textarea name="desc" id="desc" cols="30" rows="10" placeholder="Nos conte sobre você"></textarea>
+                </form>
+
+                <a href="Home.html"><button type="submit" id="pronto">Pronto</button></a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 100px;">
+        <article class="rodape">
+            <p class="inf-contato">Email: inkstudiotattoo@gmail.com<br>
+                Tel: +55 11 3242-2345 <br>
+                <a href="Suporte.html" id="suporte-link">Suporte</a>
+            </p>
+
+            <p class="inf-local">Local: R. Interna Grupo Bandeirante, 2956-3006 - Jardim Belval<br> <br>
+                Estamos abertos de segunda a sexta das 8:00h ás 19:00h <br> e aos sábados das 8:00h ás 16:00h</p>
+        </article>
+    </footer>
+</body>
+
+</html>

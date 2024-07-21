@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th"http://thymeleaf.org">
+
+<style>
+	body{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: black;
+		color: white;
+	}
+
+	h1{
+		font-size: 40px;
+	}
+	.dados{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		font-size: 30px;
+	}
+	span{
+		margin: 10px;
+	}
+</style>
+
+<head>
+	<title>Listar</title>
+</head>
+<body>
+
+	<h1>Users</h1>
+	<div class="dados" th:each="usuario: ${usuario}">
+	<p>id: <span th:text="${usuario.id}"></span></p>
+	<p>Nome: <span th:text="${usuario.nome}"></span></p>
+	<p>Email: <span th:text="${usuario.email}"></span></p>
+	<p>CPF: <span th:text="${usuario.cpf}"></span></p>
+	<a th:href="@{'/inkstudiotattoo/usuario/alterar/' + ${usuario.id}}"><button style="width: 120px; margin-left: -2px;">Perfil</button></a>
+	</div>
+</body>
+</html>

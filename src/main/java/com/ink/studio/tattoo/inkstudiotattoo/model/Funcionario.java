@@ -8,29 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Funcionario")
+@Table(name = "funcionario")
 public class Funcionario {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Long id; 
-	private String name;
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto incremento do SQL Server
+	@Column(name = "id")
+	private Long id;
+	private String nome;
 	private String nascimento;
 	private String descricao;
-	private String tipoServico;
+	private String servico;
 	private String cpf;
-	public long getId() {
+	private String email;
+	private String tel;
+	private String senha;
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getNascimento() {
 		return nascimento;
@@ -45,10 +49,10 @@ public class Funcionario {
 		this.descricao = descricao;
 	}
 	public String getTipoServico() {
-		return tipoServico;
+		return servico;
 	}
-	public void setTipoServico(String tipoServico) {
-		this.tipoServico = tipoServico;
+	public void setTipoServico(String servico) {
+		this.servico = servico;
 	}
 	public String getCpf() {
 		return cpf;
@@ -56,6 +60,23 @@ public class Funcionario {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getTelefone() {
+		return tel;
+	}
+	public void setTelefone(String tel) {
+		this.tel = tel;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	
 }

@@ -9,48 +9,49 @@ body{
     background: #1A1A1A;
 }
 
-main{
-    display: flex;
-    justify-content: center;
+.container-recuperar-senha{
+    width: 35rem;
+    height: 80vh;
     color: white;
+    outline: 2px solid white;
+    border-radius: 10px;
+    margin: 0 auto;
 }
 
-.rec{
+.container-recuperar-senha form{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
-    width: 50vw;
-    min-height: 100vh;
-    text-align: center; 
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    
 }
 
-.rec h1{
-    position: relative;
-    bottom: 250px;
-    font-size: 70px;
+.container-recuperar-senha form img{
+    width: 8rem;
+    height: 8rem;
+}
+
+.container-recuperar-senha h1{
+    font-size: 50px;
     font-family: 'Cloister Black', sans-serif;
+    margin-top: -40px;
 }
 
-h2{
-    text-align: left;
-    margin-bottom: 10px;
+.codigo, .codigo h2{
+    text-align: center;
+    margin-bottom: 6px;
 }
 
-.rec img{
-    position: relative;
-    bottom: 230px;
-    right: 360px;
-    cursor: pointer;
-}
-
-
-.rec input{
+.container-recuperar-senha input{
     width:30rem;
     height: 3rem;
     font-size: 18px;
 }
 
-.rec button{
+.container-recuperar-senha button{
     width: 30rem;
     height: 3rem;
     cursor: pointer;
@@ -60,20 +61,14 @@ h2{
     border-radius: 8px;
     margin-top: 30px;
     border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 
-.rec button:hover{
-    background: #004578;
+.container-recuperar-senha button:hover{
+    background: #ffffff;
+    color: #0e0e0e;
     transition: 0.5s;
-}
-
-.logo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50vw;
-    min-height: 100vh;
-    background: #0e0e0e;
 }
 
 .logo img{

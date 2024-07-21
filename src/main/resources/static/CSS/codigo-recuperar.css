@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body{
+    background: #1A1A1A;
+}
+
+
+.container-recuperar-senha{
+    width: 35rem;
+    height: 80vh;
+    margin: 0 auto;
+    color: white;
+    outline: 2px solid white;
+    border-radius: 10px;
+}
+
+.container-recuperar-senha form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.container-recuperar-senha form img{
+    width: 8rem;
+    height: 8rem;
+}
+
+.container-recuperar-senha h1{
+    font-size: 50px;
+    font-family: 'Cloister Black', sans-serif;
+    margin-top: -40px;
+}
+
+.codigo, .codigo h2{
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.container-recuperar-senha input{
+    width:30rem;
+    height: 3rem;
+    font-size: 18px;
+}
+
+.container-recuperar-senha button{
+    width: 30rem;
+    height: 3rem;
+    cursor: pointer;
+    background: black;
+    color: white;
+    font-size: 25px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+.container-recuperar-senha button:hover{
+    background: #ffffff;
+    color: #0e0e0e;
+    transition: 0.5s;
+}
+
+
+.logo img{
+    height: 400px;
+    width: 400px;
+}
+
+
+

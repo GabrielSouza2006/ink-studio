@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/cadastro.css">
+  <link rel="stylesheet" href="../CSS/cabeca-rodape.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/cloister-black');
+    @import url('https://fonts.cdnfonts.com/css/great-vibes');
+  </style>
+</head>
+
+<body style="background-color: #000;">
+
+  <section class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" style="width: 100%;">
+
+      <form th:action="@{/funcionarios/cadastro}" th:object="${funcionario}" method="post">
+        <h2>Cadastro de funcionario</h2>
+        <label>Digite seu nome:</label>
+        <input name="nome" th:text="${nome}" type="text" required placeholder="Insira seu nome">
+
+        <label>Digite seu email:</label>
+        <input name="email" th:text="${email}" type="email" required placeholder="Insira seu email">
+
+        <label>Digite seu telefone:</label>
+        <input name="telefone" th:text="${telefone}" type="text" placeholder="Insira seu telefone">
+
+        <label>Data de nascimento:</label>
+        <input name="nascimento" th:text="${nascimento}" type="text" placeholder="12/12/2000" required>
+
+        <label>Tipo de serviço:</label>
+        <input name="servico" th:text="${servico}" type="text" placeholder="Tatuagem" required>
+
+        <label>Digite seu CPF:</label>
+        <input name="cpf" th:text="${cpf}" type="text" pattern="[0-9]{11}" title="Somente números e com 11 digitos"
+          placeholder="12345678906" required>
+
+        <label>Fale sobre você (você pode adicionar essa informação depois):</label>
+        <textarea name="descricao" th:text="${descricao}" type="text" rows="5"></textarea>
+
+        <label>Crie uma senha forte:</label>
+        <input name="senha" th:text="${senha}" type="password" required>
+
+        <div class="d-flex justify-content-between my-4">
+          <a href="Login.html"><button type="button">Voltar</button></a>
+          <button type="submit" name="Enviar">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="container-fluid d-flex justify-content-center">
+    <article class="row container">
+      <p class="col">Email: inkstudiotattoo@gmail.com<br>
+        Tel: +55 11 3242-2345 <br>
+        <a href="FaleConosco.html" id="suporte-link">Suporte</a>
+      </p>
+
+      <p class="col">Local: R. Interna Grupo Bandeirante, 2956-3006 - Jardim Belval<br> <br>
+        Estamos abertos de segunda a sexta das 8:00h ás 19:00h <br> e aos sábados das 8:00h ás 16:00h</p>
+    </article>
+  </footer>
+
+  <script src="./JS/cadastro.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

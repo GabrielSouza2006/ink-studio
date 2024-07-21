@@ -57,7 +57,6 @@ public class UsuarioController {
 	// Página principal controller
 	@GetMapping("/pagina-principal")
 	public String paginaPrincipal() {
-
 		return "pagina-principal";
 	}
 

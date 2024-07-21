@@ -8,18 +8,14 @@ import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
 
 @Service
 public class FuncionarioService {
-	
 	@Autowired
 	FuncionarioRepository fr;
 	
 	public FuncionarioService(FuncionarioRepository fr) {
 		this.fr = fr;
 	}
-
-	public Funcionario gravarFunc(Funcionario funcionario) {
+	public Funcionario gravarFuncionario(Funcionario funcionario) {
 		
 		return fr.save(funcionario);
 	}
-	
-
 }

@@ -9,7 +9,7 @@ body{
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #313131;
+    background: #3a3a3a;
 }
 section{
     display: flex;
@@ -19,7 +19,7 @@ section{
     padding: 10px 45px;
     background: #1d1d2e;
     width: 500px;
-    background: #1A1A1A;
+    background: #000000;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 section h2{
@@ -32,6 +32,7 @@ section form{
     display: flex;
     flex-direction: column;
     width: 100%;
+
 }
 form label{
     color: #f5f5f5;
@@ -63,12 +64,14 @@ form textarea:focus{
 form button{
     padding: 15px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     background: transparent;
     border: 2px solid #f5f5f5;
     color: #f5f5f5;
     transition: all 1s;
     margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 form button:hover{
     background: #f5f5f5;

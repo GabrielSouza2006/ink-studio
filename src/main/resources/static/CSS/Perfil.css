@@ -31,14 +31,16 @@ main{
 }
 
 button{
-    border: solid 1px #4D4D4D;
+
     width: 100%;
     padding: 20px;
     font-size: 28px;
-    background: #4D4D4D;
+    background: #000000;
     color: white;
     border-radius: 7px;
     cursor: pointer;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
 }
 
 button:hover{
@@ -63,12 +65,12 @@ form{
 }
 
 form input{
-    background-color: #4D4D4D;
+    background-color: #ffffff;
     border-radius: 3px;
     padding-right: 200px;
     padding-bottom: 10px;
-    font-size: 20px;
-    color: white;
+    font-size: 15px;
+    color: rgb(98, 98, 98);
     box-shadow: none;
     border: none;
 
@@ -81,11 +83,11 @@ form input:hover{
 }
 
 form textarea{
-    background-color: #4D4D4D;
+    background-color: #ffffff;
     border-radius: 10px;
     padding-right: 80px;
     padding-bottom: 10px;
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     box-shadow: none;
     border: none;

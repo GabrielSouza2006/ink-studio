@@ -25,7 +25,6 @@ nav li a{
     text-decoration: none;
     padding: 30px;
     width: 220px;
-
     }
 
 nav li a:hover{
@@ -58,25 +57,17 @@ nav li a:hover{
 
 .menu{
     display: flex;
-    flex-flow: nowrap;
     height: 120px;
     justify-content: center;
     align-items: center;
     text-align: center;
     background: black;
-    margin-bottom: 30px;
-
 }
 
 .logo-cabecalho{
     display: flex;
     flex: 70%;
     
-}
-
-.logo{
-    display: flex;
-    flex: 70%;    
 }
 
 .plogo{

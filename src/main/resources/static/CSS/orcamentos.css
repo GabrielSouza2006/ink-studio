@@ -1,142 +1,6 @@
-*{
-    margin: 0;
-}
-
-body{
-    background: #1A1A1A;
-}
-
-.cima{
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    
-}
-
-#seta{
-    width: 80px;
-    height: 80px;
-    margin: 10px 0px 0px 10px;
-}
-
-h2{
-    font-size: 100px;
-    font-family: 'Cloister Black', sans-serif;
-    text-align: center;
-}
-
-#logo{
-    width: 200px;
-    height: 200px;
-}
-
-.principal{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
-}
-
-.principal input, select{
-    width: 400px;
-    height: 40px;
-}
-
-.labels{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    margin-bottom: -45px;
-    margin-left: -10px;
-}
-
-
-.radios{
-    border: 2px solid white;
-    width: 150px;
-    height: 150px;
-    padding: 20px;
-    font-size: 40px;
-    color: white;
-    margin-right: 80px;
-    margin-top: -65px;
-}
-
-.baixo input{
-    width: 25px;
-    height: 30px;
-}
-
-label{
-    font-size: 26px;
-    color: white;
-}
-
-.baixo{
-    display: flex;
-    justify-content: center;    
-    margin-top: 70px;
-}
-
-.ref img{
-    width: 50px;
-    height: 50px;
-    transform: rotate(90deg);
-    border: 1px solid black;
-    border-top: none;
-    background: black;
-    position: relative;
-    top: -65px;
-    
-}
-
-.inputfile {
-    /* visibility: hidden etc. wont work */
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-    
-    
-
-  }
-  .inputfile:focus + label {
-    /* keyboard navigation */
-    outline: 1px dotted #000;
-    outline: -webkit-focus-ring-color auto 5px;
-    
-    
-  }
-  .inputfile + label * {
-    pointer-events: none;
-
-    
-    
-  }
-
-.file-c{
-    border: 1px solid black;
-    border-left: none;
-    background: white;
-    color: black;
-    position: absolute;
-    height: 50px;
-    cursor: pointer;
-    align-self: center;
-    margin-top: -65px;
-
-}
-
-
-.labels-2{
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-}
-
-.labels-2 label{
-    margin-left: 170px;
+p, label{
+    color: #FFF;
+    font-size: 20px;
 }
 
 #concluir{
@@ -144,10 +8,10 @@ label{
     margin-left: auto;
     margin-right: auto;
     padding: 16px;
-    background: #333333;
+    background: #000000;
     color: white;
     border-radius: 12px;
-    border: 1px solid #333333;
+    border: none;
     cursor: pointer;
     font-size: 24px;
     margin-top: 100px;
@@ -157,6 +21,12 @@ label{
     font-weight:bold;
 }
 
+#concluir:hover{
+    background: #f5f5f5;
+    color: #101026;
+    transition-duration: 1s;
+    border-radius: 16px;
+}
 
 .link-button{
     text-decoration: none;

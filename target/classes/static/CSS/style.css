@@ -35,28 +35,6 @@ nav li a:hover{
     text-decoration: underline;
 }
 
-.dropdown-menu{
-    position: absolute;
-    display: none;
-    font-size: 20px;
-    margin: 0px;
-    width: 180px;
-    
-}
-
-.dropdown img{
-    width: 50px;
-    height: 50px;
-}
-
-.dropdown-menu a{
-    display: block;
-}
-
-.dropdown:hover .dropdown-menu{
-    display: block;
-}
-
 h1{
     font-family: 'Cloister Black', sans-serif;
     text-align: center;
@@ -68,27 +46,12 @@ h1{
     color: white;
 }
 
-.parte1{
-    display: flex;
-    justify-content: center;
-}
-
-.parte1 img{
-    margin-right: 30%;
-    height: 350px;
-    margin-top: 30px;
-}
-
-.parte1 h2{
-    text-align: center;
-}
-
-.texto{
-    width: 400px;
-    position: absolute;
-    margin-left: 30%;
+.text1{
+    max-width: 500px;
+    text-align: justify;
     font-size: 22px;
     color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 
@@ -159,41 +122,36 @@ h1{
     margin-bottom: 150px;
 }
 
+#btn:hover{
+    background: #f5f5f5;
+    color: #101026;
+    transition-duration: 1s;
+    border-radius: 16px;
+
+}
 
 .mais-produtos h2, .mais-profissionais h2, .orcamentos h2{
     padding: 15px;
     color: white;
-    border: 3px solid;
     border-radius: 25px;
-    background: #333333;
+    background: #000000;
     width: 300px;
     text-align: center;
     margin-top: -15;
+    
 
 }
 
 .mais-produtos a, .mais-profissionais a, .orcamentos a{
     text-decoration: none;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
 }
 
-
-.profissionais{
-    display: flex;
-    justify-content: center;
-}
-
-#h2-prof{
-    font-family: 'Cloister Black', sans-serif;
-    font-size: 100px;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.profissionais img{
+.profissionais-img{
     width: 200px;
     height: 200px;
-    border: 5px solid black;
+    border: 2px solid rgb(255, 255, 255);
     padding: 10px;
     margin: 20px;
 }
@@ -201,7 +159,7 @@ h1{
 .profissionais p, a{
     text-align: center;
     font-size: 30px;
-    color: black;
+    color: #FFF !important;
     margin-top: -5px;
     text-decoration: none;
 }
@@ -212,7 +170,6 @@ h1{
     margin-top: 15px;
     margin-bottom: 150px;
 }
-
 
 .trabalhos h1{
     font-family: 'Great Vibes', sans-serif;
@@ -227,25 +184,61 @@ h1{
     margin-bottom: 5px;
 }
 
-.fotos-tattoo-1, .fotos-tattoo-2{
+.fotos-tattoo{
     display: flex;
     justify-content: center;
-
 }
 
-.fotos-tattoo-1 img, .fotos-tattoo-2 img{
+.fotos-tattoo img{
     width: 350px;
     height: 450px;
     margin: 10px;
 }
 
-.fotos-tattoo-2{
-    margin-top: 50px;
-}
-
-
 .orcamentos{
     display: flex;
     justify-content: center;
     margin-top: 30px;
+}
+.volt{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    width: 350px;
+    margin-left: 40%;
+    font-weight: bold;
+}
+
+#h2{
+    font-family: 'Cloister Black', sans-serif;
+    font-size: 100px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+#h3{
+    font-family: 'Cloister Black', sans-serif;
+    font-size: 50px;
+    text-align: start;
+    color: white;
+}
+
+@media (max-width: 990px) {
+    .logo{
+        display: none !important;
+    }
+    .logo-2{
+        display: block !important;
+    }
+}
+
+@media (max-width: 700px) {
+    .foto-second{
+        display: none !important;
+    }
+
+    #h2{
+        font-size: 60px;
+    }
 }
