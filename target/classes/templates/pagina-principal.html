@@ -34,10 +34,10 @@
 
             <div class="links">
                 <div class="as">
-                    <a href="Home.html">Home</a>
-                    <a href="Login.html">Login</a>
-                    <a href="orcamentos.html">Orçamentos</a>
-                </div>
+                    <a th:href="@{/home}">Home</a>
+                    <a th:href="@{/usuarios/login}">Login</a>
+                    <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
+                  </div>
 
                 <div class="redes">
                     <div class="as2">
@@ -77,7 +77,7 @@
                             <a href="orcamentos.html"><img style="width: 200px;" src="../imagens/agenda.png"></a>
                             <a class="mt-3"
                                 style="text-decoration: none; font-size: 50px; color: #FFF; margin-left: 0px; font-family: 'Cloister Black', sans-serif;"
-                                href="orcamentos.html">Orçamentos</a>
+                                th:href="@{/orcamentos/cadastro}">Orçamentos</a>
                         </div>
                     </div>
                     <div class="mt-5">

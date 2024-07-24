@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -29,9 +28,9 @@
 
       <div class="links">
         <div class="as">
-          <a href="Home.html">Home</a>
-          <a href="Login.html">Login</a>
-          <a href="orcamentos.html">Orçamentos</a>
+          <a th:href="@{/home}">Home</a>
+          <a th:href="@{/usuarios/login}">Login</a>
+          <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
         </div>
 
         <div class="redes">
@@ -71,7 +70,7 @@
         <input name="senha" th:text="${senha}" type="password" required>
 
         <div class="botoes">
-          <a href="Login.html"><button type="button">Voltar</button></a>
+          <a th:href="@{/usuarios/login}"><button type="button">Voltar</button></a>
           <button type="submit" name="Enviar">Enviar</button>
         </div>
       </form>
