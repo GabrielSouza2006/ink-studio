@@ -21,7 +21,7 @@ public class Funcionario {
 	private String servico;
 	private String cpf;
 	private String email;
-	private String tel;
+	private String telefone;
 	private String senha;
 	
 	public Long getId() {
@@ -48,10 +48,10 @@ public class Funcionario {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getTipoServico() {
+	public String getServico() {
 		return servico;
 	}
-	public void setTipoServico(String servico) {
+	public void setServico(String servico) {
 		this.servico = servico;
 	}
 	public String getCpf() {
@@ -67,10 +67,10 @@ public class Funcionario {
 		this.email = email;
 	}
 	public String getTelefone() {
-		return tel;
+		return telefone;
 	}
-	public void setTelefone(String tel) {
-		this.tel = tel;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	public String getSenha() {
 		return senha;

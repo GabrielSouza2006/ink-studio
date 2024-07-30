@@ -53,10 +53,10 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getFone() {
+	public String getTelefone() {
 		return telefone;
 	}
-	public void setFone(String telefone) {
+	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 	public String getDataNascimento() {

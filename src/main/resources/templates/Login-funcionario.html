@@ -26,9 +26,9 @@
 
       <div class="links">
         <div class="as">
-          <a href="Home.html">Home</a>
-          <a href="Login.html">Login</a>
-          <a href="orcamentos.html">Orçamentos</a>
+          <a th:href="@{/home}">Home</a>
+          <a th:href="@{/usuarios/login}">Login</a>
+          <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
         </div>
 
         <div class="redes">
@@ -61,8 +61,8 @@
         <button type="submit" name="Entrar">Entrar</button><br>
 
         <p>Não tem uma conta ainda?</p>
-        <a href="Cadastro.html">Cadastre-se aqui!</a><br>
-        <a href="recuperar-senha.html" class="esqueci-senha">Esqueci a senha</a>
+        <a th:href="@{/funcionarios/cadastro}">Cadastre-se aqui!</a><br>
+        <a th:href="@{/funcionarios/trocar-senha}" class="esqueci-senha">Esqueci a senha</a>
       </form>
 
     </div>
