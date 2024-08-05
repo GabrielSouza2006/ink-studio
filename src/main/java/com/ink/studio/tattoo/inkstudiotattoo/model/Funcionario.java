@@ -1,10 +1,13 @@
 package com.ink.studio.tattoo.inkstudiotattoo.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +26,8 @@ public class Funcionario {
 	private String email;
 	private String telefone;
 	private String senha;
+	@OneToMany(mappedBy = "orcamento")
+    private Set<Orcamentos> orcamentos;
 	
 	public Long getId() {
 		return id;
