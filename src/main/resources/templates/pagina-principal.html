@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página principal</title>
-    <link rel="stylesheet" href="../CSS/paginaprincipal.css">
-    <link rel="stylesheet" href="../CSS/cabeca-rodape.css">
+    <link rel="stylesheet" href="/CSS/paginaprincipal.css">
+    <link rel="stylesheet" href="/CSS/cabeca-rodape.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
@@ -37,14 +37,14 @@
                     <a th:href="@{/home}">Home</a>
                     <a th:href="@{/usuarios/login}">Login</a>
                     <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
-                  </div>
+                </div>
 
                 <div class="redes">
                     <div class="as2">
                         <a href="https://www.instagram.com/">
-                            <img src="../imagens/insta.png" width="50px" height="50px"></a>
+                            <img src="/imagens/insta.png" width="50px" height="50px"></a>
                         <a href="https://www.facebook.com">
-                            <img src="../imagens/face.png" width="50px" height="50px"></a>
+                            <img src="/imagens/face.png" width="50px" height="50px"></a>
                     </div>
                 </div>
             </div>
@@ -52,43 +52,52 @@
     </header>
 
     <main>
-        <section class="container-fluid d-flex justify-content-center row mt-5">
+        <section class="container-fluid d-flex justify-content-center row">
             <div class="col d-flex justify-content-center mt-5 mb-5">
                 <div class="container row cont-principal" style="padding-left: 200px;">
+                    <h1
+                        style="font-size: 50px; color: #FFF; margin-left: 35px; font-family: 'Cloister Black', sans-serif;">
+                        Seja bem-vindo(a)</h1>
+                    <div class="mb-5" th:each="usuario: ${usuario}">
+                        <h1 style="font-size: 50px; color: #FFF; margin-left: 35px; font-family: 'Cloister Black', sans-serif;"
+                            th:text="${usuario.nome}"></h1>
+                    </div>
                     <div class="col">
                         <div class="container d-flex flex-column justify-content-center">
-                            <a href="Agenda.html"><img style="width: 200px;" src="../imagens/agenda.png"></a>
+                            <a href="Agenda.html"><img style="width: 200px;" src="/imagens/agenda.png"></a>
                             <a class="mt-3"
                                 style="text-decoration: none; font-size: 50px; color: #FFF; margin-left: 30px; font-family: 'Cloister Black', sans-serif;"
                                 href="Agenda.html">Agenda</a>
                         </div>
 
                         <div class="container d-flex flex-column justify-content-center">
-                            <a th:href="@{/usuarios/perfil}"><img style="width: 200px;" src="../imagens/avatar.png"
+                            <a th:href="@{/usuarios/perfil/{id}}"><img style="width: 200px;" src="/imagens/avatar.png"
                                     id="orc"></a>
                             <a class="mt-3"
                                 style="text-decoration: none; font-size: 50px; color: #FFF; margin-left: 40px; font-family: 'Cloister Black', sans-serif;"
-                                th:href="@{/usuarios/perfil}">Perfil</a>
+                                th:href="@{/usuarios/perfil/{id}}">Perfil</a>
                         </div>
                     </div>
 
                     <div class="col">
                         <div class="container d-flex flex-column justify-content-center">
-                            <a href="orcamentos.html"><img style="width: 200px;" src="../imagens/agenda.png"></a>
+                            <a th:href="@{/orcamentos/cadastro}"><img style="width: 200px;"
+                                    src="/imagens/agenda.png"></a>
                             <a class="mt-3"
                                 style="text-decoration: none; font-size: 50px; color: #FFF; margin-left: 0px; font-family: 'Cloister Black', sans-serif;"
                                 th:href="@{/orcamentos/cadastro}">Orçamentos</a>
                         </div>
                     </div>
                     <div class="mt-5">
-                        <a href="Login.html"><img style="width: 50px;" src="../imagens/logoff.png"></a>
-                        <a style="text-decoration: none; font-size: 30px; color: #FFF; font-family: 'Cloister Black', sans-serif;" th:href="@{/usuarios/login}">Logoff</a>
+                        <a th:href="@{/usuarios/login}"><img style="width: 50px;" src="/imagens/logoff.png"></a>
+                        <a style="text-decoration: none; font-size: 30px; color: #FFF; font-family: 'Cloister Black', sans-serif;"
+                            th:href="@{/usuarios/login}">Logoff</a>
                     </div>
                 </div>
             </div>
 
             <div class="col d-flex justify-content-center align-items-center">
-                <img class="logo-col" src="../imagens/LogoINK.png" alt="LOGO" width="400" height="400">
+                <img class="logo-col" src="/imagens/LogoINK.png" alt="LOGO" width="400" height="400">
             </div>
         </section>
     </main>

@@ -19,9 +19,9 @@ public class Orcamentos {
 	private String servico;
 	private String cor;
 	private String horas;
-	@ManyToOne
-    @JoinColumn(name = "id")
-    private Funcionario funcionario;
+	//@ManyToOne
+    //@JoinColumn(name = "id")
+    //private Funcionario funcionario;
 	
 	public long getId() {
 		return id;

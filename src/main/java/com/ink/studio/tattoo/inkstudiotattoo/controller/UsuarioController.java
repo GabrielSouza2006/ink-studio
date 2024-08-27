@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
@@ -37,7 +39,7 @@ public class UsuarioController {
 
 		return "redirect:/usuarios/login";
 	}
-	
+
 	// -------------------------- Login --------------------------
 	@GetMapping("/login")
 	public String login() {
@@ -56,31 +58,19 @@ public class UsuarioController {
 
 	// Página principal controller
 	@GetMapping("/pagina-principal/{id}")
-	public String paginaPrincipal() {
-		return "pagina-principal";
+	public ModelAndView paginaPrincipal(@PathVariable("id") Long id) {
+	    ModelAndView mv = new ModelAndView("pagina-principal");
+	    Usuario usuario = usuarioRepository.findById(id).orElse(null);
+	    mv.addObject("usuario", usuario);
+
+	    return mv;
 	}
 
 	// -------------------------- Alterar Usuario --------------------------
-	@GetMapping("/perfil")
-	public String pag() {
+	@GetMapping("/perfil/{id}")
+	public String perfilCliente() {
 
 		return "Perfil-cliente";
 	}
 
-	@PostMapping("/alterar/{id}")
-	public String alterarUsuario(Usuario usuario) {
-
-		usuarioRepository.save(usuario);
-
-		return "redirect:/inkstudiotattoo/usuarios/listar";
-	}
-
-	// Deletar usuário
-	@GetMapping("/deletar-usuario/{id}")
-	public String deletarUsuario(@PathVariable long id) {
-
-		usuarioRepository.deleteById(id);
-
-		return "redirect:/inkstudiotattoo/usuarios/login";
-	}
 }

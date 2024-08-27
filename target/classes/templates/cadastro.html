@@ -64,8 +64,7 @@
         <input name="nascimento" th:text="${nascimento}" type="text" placeholder="12/12/2000" required id="data">
 
         <label>Digite seu CPF:</label>
-        <input name="cpf" th:text="${cpf}" type="text" pattern="[0-9]{11}" title="Somente números e com 11 digitos"
-          placeholder="12345678906" id="cpf" required>
+        <input name="cpf" th:text="${cpf}" type="text" placeholder="123.123.123-12" id="cpf" required>
 
         <label>Crie uma senha forte:</label>
         <input name="senha" th:text="${senha}" type="password" required>
@@ -79,7 +78,7 @@
 
 
     <div class="ladoDireito">
-      <img src="./../imagens/LogoINK.png" alt="">
+      <img src="../imagens/LogoINK.png" alt="">
     </div>
   </section>
 
