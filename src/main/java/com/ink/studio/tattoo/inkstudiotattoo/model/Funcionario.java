@@ -1,17 +1,10 @@
 package com.ink.studio.tattoo.inkstudiotattoo.model;
-
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-<<<<<<< HEAD
 import javax.persistence.Lob;
-=======
-import javax.persistence.OneToMany;
->>>>>>> 0e728d40d59e38e3d9c63f838c077415ec06596a
 import javax.persistence.Table;
 
 @Entity
@@ -30,13 +23,8 @@ public class Funcionario {
 	private String email;
 	private String telefone;
 	private String senha;
-<<<<<<< HEAD
 	@Lob
     private byte[] imagem; // Armazena a imagem como um array de bytes
-=======
-	@OneToMany(mappedBy = "orcamento")
-    private Set<Orcamentos> orcamentos;
->>>>>>> 0e728d40d59e38e3d9c63f838c077415ec06596a
 	
 	public byte[] getImagem() {
 		return imagem;

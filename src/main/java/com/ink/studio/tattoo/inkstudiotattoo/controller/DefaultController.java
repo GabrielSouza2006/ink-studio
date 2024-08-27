@@ -43,17 +43,17 @@ public class DefaultController {
 		return mv;
 	}
 
-	@GetMapping("/imagem/{id}")
-	@ResponseBody
-	public ResponseEntity<Resource> getPhoto(@PathVariable Long id) {
-		Funcionario funcionario = funcionarioService.getPersonById(id).orElseThrow(() -> new RuntimeException("Funcionario not found"));
+	//@GetMapping("/imagem/{id}")
+	//@ResponseBody
+	//public ResponseEntity<Resource> getPhoto(@PathVariable Long id) {
+		//Funcionario funcionario = funcionarioService.getPersonById(id).orElseThrow(() -> new RuntimeException("Funcionario not found"));
 
-		if (funcionario.getImagem() == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		//if (funcionario.getImagem() == null) {
+			//return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		//}
 
-		ByteArrayResource resource = new ByteArrayResource(funcionario.getImagem());
-		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg") // ou o tipo adequado da sua imagem
-				.contentLength(funcionario.getImagem().length).body(resource);
-	}
+		//ByteArrayResource resource = new ByteArrayResource(funcionario.getImagem());
+		//return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg") // ou o tipo adequado da sua imagem
+			//	.contentLength(funcionario.getImagem().length).body(resource);
+	//}
 }

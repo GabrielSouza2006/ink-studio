@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th"http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/cloister-black');
+        @import url('https://fonts.cdnfonts.com/css/great-vibes');
+    </style>
+
+    <link rel="stylesheet" href="/../CSS/Perfil.css" />
+    <link rel="stylesheet" href="/css/cabeca-rodape.css" />
+    <title>Editar perfil</title>
+</head>
+
+<body>
+    <header>
+        <nav class="menu" style="margin-bottom: 0;">
+            <a href="Perfil-cliente.html"><img src="/../imagens/seta-voltar-com-traco.png" width="60px" height="60px"></a>
+
+            
+
+            <div class="logo">
+                <a href="Home.html">
+                    <img src="/../imagens/LogoINK.png" style="height: 120px; width: 120px; border-radius: 50%;"></a>
+                <p class="plogo">O melhor site de tatuagem do Brasil!</p>
+            </div>
+
+            <div class="links">
+                <div class="as">
+                    <a href="Login.html">Login</a>
+                    <a href="Loja.html">Loja</a>
+                    <a href="#">Orçamentos</a>
+                </div>
+
+                </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="conteudo">
+            <div class="topo">
+                <div class="avatar">
+                    <img src="/../imagens/avatar.png" id="avatar">
+                    <div>
+                        <button type="button" id="editar-foto">Editar foto de perfil</button>
+                    </div>
+                </div>
+
+
+                <div class="logo">
+                    <img src="/../imagens/LogoINK.png" id="logo">
+                </div>
+
+            </div>
+
+
+            <div class="baixo" >
+                <form method="post">
+                    <h2>Nome:</h2>
+                    <input type="text" name="nome"  autocomplete="off" placeholder="Insira seu nome">
+
+                    <br>
+                    <h2>Email:</h2>
+                    <input type="email" name="email" autocomplete="off">
+
+                    <h2>Telefone:</h2>
+                    <input type="text" name="telefone" autocomplete="off" placeholder="Insira seu telefone">
+					<br/>	
+                    <button type="submit" id="pronto">Pronto</button>
+                </form>
+                <a th:each="usuario: ${usuario}" th:href="@{'/inkstudiotattoo/usuario/deletar-usuario/' + ${usuario.id}}"><button id="pronto">Excluir conta</button></a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <article class="rodape">
+            <p class="inf-contato">Email: inkstudiotattoo@gmail.com<br>
+                Tel: +55 11 3242-2345 <br>
+                <a href="Suporte.html" id="suporte-link">Suporte</a>
+            </p>
+
+            <p class="inf-local">Local: R. Interna Grupo Bandeirante, 2956-3006 - Jardim Belval<br> <br>
+                Estamos abertos de segunda a sexta das 8:00h ás 19:00h <br> e aos sábados das 8:00h ás 16:00h</p>
+        </article>
+    </footer>
+
+</body>
+
+</html>
