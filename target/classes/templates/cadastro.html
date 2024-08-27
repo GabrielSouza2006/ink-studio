@@ -15,6 +15,7 @@
     @import url('https://fonts.cdnfonts.com/css/cloister-black');
     @import url('https://fonts.cdnfonts.com/css/great-vibes');
   </style>
+  <script src="../JS/mascaras.js" defer></script>
 </head>
 
 <body style="background-color: #000;">
@@ -57,14 +58,14 @@
         <input name="email" th:text="${email}" type="email" required placeholder="Insira seu email">
 
         <label>Digite seu telefone:</label>
-        <input name="telefone" th:text="${telefone}" type="text" required placeholder="Insira seu telefone">
+        <input name="telefone" th:text="${telefone}" type="text" required placeholder="Insira seu telefone" id="telefone">
 
         <label>Data de nascimento:</label>
-        <input name="nascimento" th:text="${nascimento}" type="text" placeholder="12/12/2000" required>
+        <input name="nascimento" th:text="${nascimento}" type="text" placeholder="12/12/2000" required id="data">
 
         <label>Digite seu CPF:</label>
         <input name="cpf" th:text="${cpf}" type="text" pattern="[0-9]{11}" title="Somente números e com 11 digitos"
-          placeholder="12345678906" required>
+          placeholder="12345678906" id="cpf" required>
 
         <label>Crie uma senha forte:</label>
         <input name="senha" th:text="${senha}" type="password" required>

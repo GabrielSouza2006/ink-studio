@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th"http://thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th"http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <style>
-	body{
+	body {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -11,16 +10,18 @@
 		color: white;
 	}
 
-	h1{
+	h1 {
 		font-size: 40px;
 	}
-	.dados{
+
+	.dados {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 		font-size: 30px;
 	}
-	span{
+
+	span {
 		margin: 10px;
 	}
 </style>
@@ -28,14 +29,21 @@
 <head>
 	<title>Listar</title>
 </head>
+
 <body>
 
 	<h1>Users</h1>
 	<div class="dados" th:each="usuario: ${usuario}">
-	<p><span th:text="${usuario.id}"></span></p>
-	<p><span th:text="${usuario.nome}"></span></p>
-	<p><span th:text="${usuario.email}"></span></p>
-	<p><span th:text="${usuario.cpf}"></span></p>
+		<p><span th:text="${usuario.id}"></span></p>
+		<p><span th:text="${usuario.nome}"></span></p>
+		<p><span th:text="${usuario.email}"></span></p>
+		<p><span th:text="${usuario.cpf}"></span></p>
+		<form th:action="@{/admin/deletar/{id}(id=${usuario.id})}" method="post"
+			onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
+			<input type="hidden" name="_method" value="delete" />
+			<button type="submit">Deletar</button>
+		</form>
 	</div>
 </body>
+
 </html>

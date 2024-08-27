@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +24,15 @@ public class Funcionario {
 	private String email;
 	private String tel;
 	private String senha;
+	@Lob
+    private byte[] imagem; // Armazena a imagem como um array de bytes
 	
+	public byte[] getImagem() {
+		return imagem;
+	}
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -48,23 +48,23 @@ public class UsuarioController {
 	public String efetuarLogin(Model model, Usuario usuario) {
 		Usuario user = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
 		if (user != null) {
-			return "redirect:/usuarios/pagina-principal";
+			return "redirect:/usuarios/pagina-principal/" + user.getId();
 		}
 		model.addAttribute("erro", "usuario ou senha inválidos");
 		return "login";
 	}
 
 	// Página principal controller
-	@GetMapping("/pagina-principal")
+	@GetMapping("/pagina-principal/{id}")
 	public String paginaPrincipal() {
 		return "pagina-principal";
 	}
 
 	// -------------------------- Alterar Usuario --------------------------
-	@GetMapping("/alterar")
+	@GetMapping("/perfil")
 	public String pag() {
 
-		return "editar-cliente";
+		return "Perfil-cliente";
 	}
 
 	@PostMapping("/alterar/{id}")
