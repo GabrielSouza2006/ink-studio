@@ -1,11 +1,17 @@
 package com.ink.studio.tattoo.inkstudiotattoo.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+<<<<<<< HEAD
 import javax.persistence.Lob;
+=======
+import javax.persistence.OneToMany;
+>>>>>>> 0e728d40d59e38e3d9c63f838c077415ec06596a
 import javax.persistence.Table;
 
 @Entity
@@ -22,10 +28,15 @@ public class Funcionario {
 	private String servico;
 	private String cpf;
 	private String email;
-	private String tel;
+	private String telefone;
 	private String senha;
+<<<<<<< HEAD
 	@Lob
     private byte[] imagem; // Armazena a imagem como um array de bytes
+=======
+	@OneToMany(mappedBy = "orcamento")
+    private Set<Orcamentos> orcamentos;
+>>>>>>> 0e728d40d59e38e3d9c63f838c077415ec06596a
 	
 	public byte[] getImagem() {
 		return imagem;
@@ -57,10 +68,10 @@ public class Funcionario {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public String getTipoServico() {
+	public String getServico() {
 		return servico;
 	}
-	public void setTipoServico(String servico) {
+	public void setServico(String servico) {
 		this.servico = servico;
 	}
 	public String getCpf() {
@@ -76,10 +87,10 @@ public class Funcionario {
 		this.email = email;
 	}
 	public String getTelefone() {
-		return tel;
+		return telefone;
 	}
-	public void setTelefone(String tel) {
-		this.tel = tel;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 	public String getSenha() {
 		return senha;
