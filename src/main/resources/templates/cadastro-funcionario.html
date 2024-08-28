@@ -25,7 +25,7 @@
   <section class="d-flex justify-content-center">
     <div class="d-flex justify-content-center" style="width: 100%;">
 
-      <form th:action="@{/funcionarios/cadastro}" th:object="${funcionario}" method="post">
+      <form th:action="@{/funcionarios/cadastro}" enctype="multipart/form-data" th:object="${funcionario}" method="post">
         <h2>Cadastro de funcionario</h2>
         <label>Digite seu nome:</label>
         <input name="nome" th:text="${nome}" type="text" required placeholder="Insira seu nome">
@@ -44,6 +44,9 @@
 
         <label>Digite seu CPF:</label>
         <input name="cpf" th:text="${cpf}" type="text" placeholder="123.123.123-12" required id="cpf">
+
+        <label>Adicione uma foto:</label>
+        <input type="file" th:src="${fotoPerfil}" name="file" accept="image/*">
 
         <label>Fale sobre você (você pode adicionar essa informação depois):</label>
         <textarea name="descricao" th:text="${descricao}" type="text" rows="5"></textarea>

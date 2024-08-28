@@ -22,6 +22,14 @@ public class Funcionario {
 	private String email;
 	private String telefone;
 	private String senha;
+	private byte[] fotoPerfil;
+	
+	public byte[] getFotoPerfil() {
+		return fotoPerfil;
+	}
+	public void setFotoPerfil(byte[] fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
+	}
 	
 	public Long getId() {
 		return id;
