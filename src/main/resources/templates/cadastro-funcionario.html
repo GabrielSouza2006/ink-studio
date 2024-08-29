@@ -18,14 +18,21 @@
   </style>
 
   <script src="../JS/mascaras.js" defer></script>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      alert('Funcionario cadastrado com sucesso!');
+    }
+  </script>
 </head>
 
 <body style="background-color: #000;">
-
   <section class="d-flex justify-content-center">
     <div class="d-flex justify-content-center" style="width: 100%;">
 
-      <form th:action="@{/funcionarios/cadastro}" enctype="multipart/form-data" th:object="${funcionario}" method="post">
+      <form th:action="@{/funcionarios/cadastro}" enctype="multipart/form-data" th:object="${funcionario}" method="post"
+        id="cadastroFuncionarioForm">
         <h2>Cadastro de funcionario</h2>
         <label>Digite seu nome:</label>
         <input name="nome" th:text="${nome}" type="text" required placeholder="Insira seu nome">
