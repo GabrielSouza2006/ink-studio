@@ -46,27 +46,27 @@
 
     <section class="container d-flex flex-column justify-content-center my-5">
         <h1 id="h2" class="mb-5">Orçamentos</h1>
-        <form action="obrigado.html" class="mt-5">
+        <form th:action="@{/orcamentos/cadastro}" th:object="${orcamento}" method="post" class="mt-5">
 
             <div class="container row">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Quantas horas você tem disponível?</p>
-                    <input type="number" style="max-width: 250px;" placeholder="Ex: 2">
+                    <input type="number" style="max-width: 250px;" placeholder="2" th:text="${horas}">
                 </div>
 
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
                     <p>Tatuagem colorida?</p>
                     <div>
-                        <input type="radio" id="sim" name="fav_language" value="sim">
+                        <input type="radio" id="sim" name="fav_language" value="sim" th:text="${cor}">
                         <label for="sim">Sim</label><br>
-                        <input type="radio" id="nao" name="fav_language" value="nao">
+                        <input type="radio" id="nao" name="fav_language" value="nao" th:text="${cor}">
                         <label for="nao">Não</label><br>
                     </div>
                 </div>
 
                 <div class="col align-items-center align-content-center">
                     <p>Escolha seu tatuador/piercing</p>
-                    <select name="prof" id="prof" style="width: 250px;">
+                    <select name="prof" id="prof" style="width: 250px;" th:text="${servico}">
                         <option value="jessica">Jessica</option>
                         <option value="Anardo">Anardo</option>
                     </select>
@@ -76,22 +76,21 @@
             <div class="container row my-5">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
                     <p>Digite uma data:</p>
-                    <input type="text" placeholder="12/12/2024">
+                    <input type="text" placeholder="12/12/2024" th:text="${data}">
                 </div>
 
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
                     <p>Digite um horário:</p>
-
-                    <input type="text" placeholder="13:30">
+                    <input type="text" placeholder="13:30" th:text="${horas}">
                 </div>
 
                 <div class="col align-items-center align-content-center">
                     <p>valor estimado:</p>
-                    <input type="text" placeholder="R$">
+                    <input type="text" placeholder="R$" th:text="${valor}">
                 </div>
             </div>
 
-            <a href="profissionais.html" class="link-button"><button id="concluir">Enviar</button></a>
+            <a class="link-button"><button id="concluir">Enviar</button></a>
         </form>
     </section>
 

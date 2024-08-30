@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
@@ -31,10 +33,15 @@ public class UsuarioController {
 		return "cadastro";
 	}
 
-	@PostMapping(path = "/cadastro", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public String create(@ModelAttribute Usuario usuario) {
+	@PostMapping("/cadastro")
+	public String create(Model model, @ModelAttribute Usuario usuario) {
 
-		usuarioService.gravarUsuario(usuario);
+		try {
+			usuarioService.gravarUsuario(usuario);
+		} catch (IllegalArgumentException e) {
+			model.addAttribute("error", e.getMessage());
+			return "redirect:/usuarios/cadastro";
+		}
 
 		return "redirect:/usuarios/login";
 	}
@@ -58,11 +65,11 @@ public class UsuarioController {
 	// Página principal controller
 	@GetMapping("/pagina-principal/{id}")
 	public ModelAndView paginaPrincipal(@PathVariable("id") Long id) {
-	    ModelAndView mv = new ModelAndView("pagina-principal");
-	    Usuario usuario = usuarioRepository.findById(id).orElse(null);
-	    mv.addObject("usuario", usuario);
+		ModelAndView mv = new ModelAndView("pagina-principal");
+		Usuario usuario = usuarioRepository.findById(id).orElse(null);
+		mv.addObject("usuario", usuario);
 
-	    return mv;
+		return mv;
 	}
 
 	// -------------------------- Alterar Usuario --------------------------

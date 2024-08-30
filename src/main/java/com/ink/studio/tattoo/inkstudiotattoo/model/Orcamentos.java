@@ -1,11 +1,11 @@
 package com.ink.studio.tattoo.inkstudiotattoo.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,10 +19,14 @@ public class Orcamentos {
 	private String servico;
 	private String cor;
 	private String horas;
-	//@ManyToOne
-    //@JoinColumn(name = "id")
-    //private Funcionario funcionario;
+	private LocalDate data;
 	
+	public LocalDate getData() {
+		return data;
+	}
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
 	public long getId() {
 		return id;
 	}

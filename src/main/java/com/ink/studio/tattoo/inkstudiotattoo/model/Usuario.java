@@ -22,7 +22,6 @@ public class Usuario {
 	private String telefone;
 	private String nascimento;
 	
-	
 	public Long getId() {
 		return id;
 	}
@@ -59,7 +58,7 @@ public class Usuario {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public String getDataNascimento() {
+	public String getNascimento() {
 		return nascimento;
 	}
 	public void setNascimento(String nascimento) {
