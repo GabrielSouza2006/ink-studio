@@ -23,6 +23,14 @@ public class Funcionario {
 	private String telefone;
 	private String senha;
 	private byte[] fotoPerfil;
+	private byte[] fotoTattoo;
+	
+	public byte[] getFotoTattoo() {
+		return fotoTattoo;
+	}
+	public void setFotoTattoo(byte[] fotoTattoo) {
+		this.fotoTattoo = fotoTattoo;
+	}
 	
 	public byte[] getFotoPerfil() {
 		return fotoPerfil;

@@ -53,7 +53,10 @@
         <input name="cpf" th:text="${cpf}" type="text" placeholder="123.123.123-12" required id="cpf">
 
         <label>Adicione uma foto:</label>
-        <input type="file" th:src="${fotoPerfil}" name="file" accept="image/*">
+        <input type="file" th:src="${fotoPerfil}" name="file" accept="image/*" style="color: #FFF;">
+
+        <label>Adicione uma foto do seu trabalho:</label>
+        <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;">
 
         <label>Fale sobre você (você pode adicionar essa informação depois):</label>
         <textarea name="descricao" th:text="${descricao}" type="text" rows="5"></textarea>

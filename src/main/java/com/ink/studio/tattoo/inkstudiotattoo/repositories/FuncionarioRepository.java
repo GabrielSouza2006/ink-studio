@@ -10,4 +10,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 
 	@Query(value = "select * from funcionario where cpf = :cpf and senha = :senha", nativeQuery = true)
 	public Funcionario login(String cpf, String senha);
+	
+	 boolean existsByCpf(String cpf);
 }

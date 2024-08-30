@@ -22,7 +22,19 @@ public class FuncionarioService {
 		return fr.findById(id).get();
 	}
 	
+	public boolean existsById(Long id) {
+        return fr.existsById(id);
+    }
+
+    public void deleteById(Long id) {
+        fr.deleteById(id);
+    }
+	
 	public Funcionario gravarFuncionario(Funcionario funcionario, MultipartFile file) {
+		
+		if (fr.existsByCpf(funcionario.getCpf())) {
+            throw new IllegalArgumentException("CPF Inválido!");
+        }
 		
 		if (file != null && file.getSize() > 0) {
 			try {

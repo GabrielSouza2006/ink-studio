@@ -33,12 +33,12 @@
 <body>
 
 	<h1>Users</h1>
-	<div class="dados" th:each="funcionario: ${funcionario}">
-		<p><span th:text="${funcionario.id}"></span></p>
-		<p><span th:text="${funcionario.nome}"></span></p>
-		<p><span th:text="${funcionario.email}"></span></p>
-		<p><span th:text="${funcionario.cpf}"></span></p>
-		<form th:action="@{/admin/deletar/{id}(id=${funcionario.id})}" method="post"
+	<div class="dados" th:each="usuario: ${usuario}">
+		<p><span th:text="${usuario.id}"></span></p>
+		<p><span th:text="${usuario.nome}"></span></p>
+		<p><span th:text="${usuario.email}"></span></p>
+		<p><span th:text="${usuario.cpf}"></span></p>
+		<form th:action="@{/admin/deletar-user/{id}(id=${usuario.id})}" method="post"
 			onsubmit="return confirm('Tem certeza que deseja excluir este usuário?');">
 			<input type="hidden" name="_method" value="delete" />
 			<button type="submit">Deletar</button>

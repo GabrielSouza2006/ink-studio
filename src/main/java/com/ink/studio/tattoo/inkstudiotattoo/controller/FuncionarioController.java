@@ -39,9 +39,14 @@ public class FuncionarioController {
 	}
 
 	@PostMapping("/cadastro")
-	public String create(@ModelAttribute Funcionario funcionario, @RequestParam(value = "file", required = false) MultipartFile file) {
-
-		funcionarioService.gravarFuncionario(funcionario, file);
+	public String create(Model model, @ModelAttribute Funcionario funcionario, @RequestParam(value = "file", required = false) MultipartFile file) {
+		
+		try {
+	        funcionarioService.gravarFuncionario(funcionario, file);
+	    } catch (IllegalArgumentException e) {
+	        model.addAttribute("error", e.getMessage());
+	        return "redirect:/funcionarios/cadastro";
+	    }
 
 		return "redirect:/funcionarios/login";
 	}
@@ -80,6 +85,24 @@ public class FuncionarioController {
 		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
 		if (funcionario.getFotoPerfil() != null) {
 			response.getOutputStream().write(funcionario.getFotoPerfil());
+		} else {
+			response.getOutputStream().write(null);
+		}
+
+		response.getOutputStream().close();
+	}
+	
+	@GetMapping("/showImageTattoo/{id}")
+	@ResponseBody
+	public void showImageTattoo(@PathVariable("id") long id, 
+			HttpServletResponse response, Funcionario funcionario)
+			throws ServletException, IOException {
+
+		funcionario = funcionarioService.findById(id);
+
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+		if (funcionario.getFotoTattoo() != null) {
+			response.getOutputStream().write(funcionario.getFotoTattoo());
 		} else {
 			response.getOutputStream().write(null);
 		}
