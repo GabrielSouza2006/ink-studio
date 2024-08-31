@@ -55,7 +55,10 @@
 
                 <h3 th:text="${funcionario.nome}"></h3>
                 <p th:text="${funcionario.descricao}"></p>
-                <p th:text="${funcionario.servico}"></p>
+                <div class="d-flex flex-row justify-content-center" style="gap: 10px;">
+                    <p>Telefone: </p>
+                    <p th:text="${funcionario.telefone}"></p>
+                </div>
             </div>
 
             <div class="col" style="color: #fff; text-align: center;">

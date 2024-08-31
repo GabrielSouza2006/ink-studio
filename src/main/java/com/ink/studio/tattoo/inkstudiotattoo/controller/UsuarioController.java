@@ -77,6 +77,5 @@ public class UsuarioController {
 	public String perfilCliente() {
 
 		return "Perfil-cliente";
-	}
-
+	}	
 }

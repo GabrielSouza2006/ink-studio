@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -51,7 +51,7 @@
             <div class="container row">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Quantas horas você tem disponível?</p>
-                    <input type="number" style="max-width: 250px;" placeholder="2" th:text="${horas}">
+                    <input type="text" style="max-width: 250px;" placeholder="2" th:text="${horas}">
                 </div>
 
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
@@ -76,7 +76,7 @@
             <div class="container row my-5">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
                     <p>Digite uma data:</p>
-                    <input type="text" placeholder="12/12/2024" th:text="${data}">
+                    <input type="date" th:text="${data}">
                 </div>
 
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">

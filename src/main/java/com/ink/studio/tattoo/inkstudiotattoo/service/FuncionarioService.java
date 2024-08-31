@@ -11,6 +11,7 @@ import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
 
 @Service
 public class FuncionarioService {
+	
 	@Autowired
 	FuncionarioRepository fr;
 

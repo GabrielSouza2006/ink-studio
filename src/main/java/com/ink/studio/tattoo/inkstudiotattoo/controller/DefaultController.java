@@ -23,6 +23,12 @@ public class DefaultController {
 	public String cadastro() {
 		return "home";
 	}
+	
+	@GetMapping("/obrigado")
+	public String agradecimentos() {
+
+		return "obrigado";
+	}
 
 	@GetMapping("/profissionais")
 	public ModelAndView listarUsuario() {

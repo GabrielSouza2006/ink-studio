@@ -64,10 +64,10 @@
                     </div>
                     <div class="col">
                         <div class="container d-flex flex-column justify-content-center">
-                            <a href="Agenda.html"><img style="width: 200px;" src="/imagens/agenda.png"></a>
+                            <a th:href="@{/usuarios/agenda/{id}}"><img style="width: 200px;" src="/imagens/agenda.png"></a>
                             <a class="mt-3"
                                 style="text-decoration: none; font-size: 50px; color: #FFF; margin-left: 30px; font-family: 'Cloister Black', sans-serif;"
-                                href="Agenda.html">Agenda</a>
+                                th:href="@{/usuarios/agenda/{id}}">Agenda</a>
                         </div>
 
                         <div class="container d-flex flex-column justify-content-center">
@@ -82,7 +82,7 @@
                     <div class="col">
                         <div class="container d-flex flex-column justify-content-center">
                             <a th:href="@{/orcamentos/cadastro}"><img style="width: 200px;"
-                                    src="/imagens/agenda.png"></a>
+                                    src="/imagens/orcamento.png"></a>
                             <a class="mt-3"
                                 style="text-decoration: none; font-size: 50px; color: #FFF; margin-left: 0px; font-family: 'Cloister Black', sans-serif;"
                                 th:href="@{/orcamentos/cadastro}">Orçamentos</a>

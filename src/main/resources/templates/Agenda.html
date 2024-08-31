@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda</title>
-    <link rel="stylesheet" href="./../CSS/agenda.css">
-    <link rel="stylesheet" href="./css/cabeca-rodape.css">
+    <link rel="stylesheet" href="/CSS/agenda.css">
+    <link rel="stylesheet" href="/CSS/cabeca-rodape.css">
     <style>
         @import url('https://fonts.cdnfonts.com/css/cloister-black');
         @import url('https://fonts.cdnfonts.com/css/great-vibes');
@@ -16,43 +16,27 @@
 
 <body>
 
-    <header>
-        <nav class="menu" style="margin-bottom: 0;">
-            <a href="pagina-principal.html"><img src="./../imagens/seta-voltar-com-traco.png" width="60px" height="60px"></a>
-
-            <ul>
-                <li class="dropdown">
-                    <a href=""><img src="./../imagens/menu.png"></a>
-    
-                    <div class="dropdown-menu">
-                    <a href="Home.html" target="_self">Chat</a>
-                    <a href="Painel.html" target="_self">Carrinho</a>
-                    <a href="FaleConosco.html" target="_self">Fale conosco</a>
-                    </ul>
-            
-
-            <div class="logo">
-                <a href="Home.html">
-                    <img src="./../imagens/LogoINK.png" style="height: 120px; width: 120px; border-radius: 50%;"></a>
+    <header class="d-flex justify-content-center">
+        <nav class="container-fluid menu px-5">
+            <div class="container" style="max-width: 510px;">
                 <p class="plogo">O melhor site de tatuagem do Brasil!</p>
             </div>
 
             <div class="links">
                 <div class="as">
-                <a href="Home.html">Home</a>
-                <a href="Loja.html">Loja</a>
-                <a href="#">Orçamentos</a>
+                    <a th:href="@{/home}">Home</a>
+                    <a th:href="@{/usuarios/login}">Login</a>
+                    <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
                 </div>
 
                 <div class="redes">
                     <div class="as2">
-                    <a href="https://www.instagram.com/">
-                        <img src="./../imagens/insta.png" width="50px" height="50px"></a>
-
-                    <a href="https://www.facebook.com">
-                        <img src="./../imagens/face.png" width="50px" height="50px"></a>
+                        <a href="https://www.instagram.com/">
+                            <img src="/imagens/insta.png" width="50px" height="50px"></a>
+                        <a href="https://www.facebook.com">
+                            <img src="/imagens/face.png" width="50px" height="50px"></a>
+                    </div>
                 </div>
-
             </div>
         </nav>
     </header>
@@ -66,22 +50,16 @@
             <th>Horário</th>
             <th>Serviço</th>
             <th>Profissional</th>
+            <th>Valor</th>
         </tr>
 
-        <tr>
-            <td><input type="date"></td>
-            <td>13:00</td>
-            <td>Tatuagem</td>
-            <td>José Kinovic</td>
+        <tr th:each="agenda: ${agenda}">
+            <td th:text="${agenda.data}"></td>
+            <td th:text="${agenda.horas}"></td>
+            <td th:text="${agenda.servico}"></td>
+            <td th:text="${agenda.profissional}"></td>
+            <td th:text="${agenda.valor}"></td>
         </tr>
-
-        <tr>
-            <td><input type="date"></td>
-            <td>16:00</td>
-            <td>Piercing</td>
-            <td>Katarina Malaclov</td>
-        </tr>
-
     </table>
 
     <footer style="position: absolute; bottom: 0; width: 100%;">
