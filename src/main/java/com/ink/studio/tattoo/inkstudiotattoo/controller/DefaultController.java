@@ -21,7 +21,7 @@ public class DefaultController {
 
 	@GetMapping("/home")
 	public String cadastro() {
-		return "home";
+		return "Home";
 	}
 	
 	@GetMapping("/obrigado")

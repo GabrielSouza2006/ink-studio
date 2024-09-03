@@ -1,7 +1,8 @@
 package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
@@ -53,12 +52,15 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/login")
-	public String efetuarLogin(Model model, Usuario usuario) {
-		Usuario user = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
-		if (user != null) {
-			return "redirect:/usuarios/pagina-principal/" + user.getId();
+	public String efetuarLogin(Model model, Usuario usuario, HttpSession session) {
+		Usuario userSession = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
+
+		if (userSession != null) {
+			session.setAttribute("usuarioLogado", userSession);
+			model.addAttribute("usuario", userSession);
+		} else {
+			model.addAttribute("erro", "usuario ou senha inválidos");
 		}
-		model.addAttribute("erro", "usuario ou senha inválidos");
 		return "login";
 	}
 
@@ -77,5 +79,5 @@ public class UsuarioController {
 	public String perfilCliente() {
 
 		return "Perfil-cliente";
-	}	
+	}
 }

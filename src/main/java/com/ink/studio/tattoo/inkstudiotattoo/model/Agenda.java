@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +25,34 @@ public class Agenda {
 	private String servico;
 	private String profissional;
 	private double valor;
+	@ManyToOne
+	@JoinColumn(name = "Id_funcionario")
+	private Funcionario funcionario;
+	@ManyToOne
+	@JoinColumn(name = "Id_usuario")
+	private Usuario usuario;
+	@ManyToOne
+	@JoinColumn(name = "Id_Orcamento")
+	private Orcamentos orcamento;
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Orcamentos getOrcamento() {
+		return orcamento;
+	}
+	public void setOrcamento(Orcamentos orcamento) {
+		this.orcamento = orcamento;
+	}
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
 	public Long getId() {
 		return id;
 	}
