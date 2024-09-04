@@ -1,12 +1,8 @@
 package com.ink.studio.tattoo.inkstudiotattoo.service;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
 
@@ -33,8 +29,11 @@ public class UsuarioService {
 		return ur.existsById(id);
 	}
 
-	public void deleteById(Long id) {
-		ur.deleteById(id);
-	}
+	public void desativarUsuario(Long id) {
+        Usuario usuario = ur.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        usuario.setStatusUsuario("INATIVO");
+        ur.save(usuario);
+    }
 
 }

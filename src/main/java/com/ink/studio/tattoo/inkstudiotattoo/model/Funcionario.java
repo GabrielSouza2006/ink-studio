@@ -22,9 +22,17 @@ public class Funcionario {
 	private String email;
 	private String telefone;
 	private String senha;
+	private String statusUsuario;
 	private byte[] fotoPerfil;
 	private byte[] fotoTattoo;
 	
+	
+	public String getStatusUsuario() {
+		return statusUsuario;
+	}
+	public void setStatusUsuario(String statusUsuario) {
+		this.statusUsuario = statusUsuario;
+	}
 	public byte[] getFotoTattoo() {
 		return fotoTattoo;
 	}

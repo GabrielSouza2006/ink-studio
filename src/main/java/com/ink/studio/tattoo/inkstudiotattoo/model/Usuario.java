@@ -21,7 +21,14 @@ public class Usuario {
 	private String nome;
 	private String telefone;
 	private String nascimento;
+	private String statusUsuario;
 	
+	public String getStatusUsuario() {
+		return statusUsuario;
+	}
+	public void setStatusUsuario(String statusUsuario) {
+		this.statusUsuario = statusUsuario;
+	}
 	public Long getId() {
 		return id;
 	}

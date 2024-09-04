@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
@@ -36,6 +36,7 @@ public class UsuarioController {
 	public String create(Model model, @ModelAttribute Usuario usuario) {
 
 		try {
+			usuario.setStatusUsuario("ATIVO");
 			usuarioService.gravarUsuario(usuario);
 		} catch (IllegalArgumentException e) {
 			model.addAttribute("error", e.getMessage());
@@ -54,24 +55,48 @@ public class UsuarioController {
 	@PostMapping("/login")
 	public String efetuarLogin(Model model, Usuario usuario, HttpSession session) {
 		Usuario userSession = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
-
+		
+		
 		if (userSession != null) {
 			session.setAttribute("userSession", userSession);
 			model.addAttribute("usuario", userSession);
-			
+
 			return "pagina-principal";
 		}
-		
+
 		model.addAttribute("erro", "usuario ou senha inválidos");
 		return "login";
 	}
 
-	// -------------------------- Alterar Usuario --------------------------
-	@GetMapping("/perfil/{id}")
-	public String perfilCliente() {
+	@GetMapping("/logoff")
+	public String efetuarLogoff(HttpSession session) {
 
+		session.invalidate();
+
+		return ("login");
+	}
+
+	// -------------------------- Alterar Usuario --------------------------
+	@GetMapping("/perfil")
+	public String perfilCliente() {
 		return "Perfil-cliente";
 	}
-	
-	// -------------------------- Orcamento --------------------------
+
+	@GetMapping("/editar-cliente")
+	public String paginaEditarCliente() {
+		return "editar-func";
+	}
+
+	@PutMapping("/editar-cliente")
+	public String editarCliente() {
+
+		return "perfil-cliente";
+	}
+
+	@PostMapping("/deletar-conta/{id}")
+    public String desativarUsuario(@PathVariable Long id) {
+        usuarioService.desativarUsuario(id);
+        
+        return "redirect:/usuarios/login";
+    }
 }

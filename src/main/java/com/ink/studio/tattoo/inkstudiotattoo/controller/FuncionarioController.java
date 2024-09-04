@@ -42,6 +42,7 @@ public class FuncionarioController {
 	public String create(Model model, @ModelAttribute Funcionario funcionario, @RequestParam(value = "file", required = false) MultipartFile file) {
 		
 		try {
+			funcionario.setStatusUsuario("ATIVO");
 	        funcionarioService.gravarFuncionario(funcionario, file);
 	    } catch (IllegalArgumentException e) {
 	        model.addAttribute("error", e.getMessage());
