@@ -58,7 +58,7 @@
                     <h1
                         style="font-size: 50px; color: #FFF; margin-left: 35px; font-family: 'Cloister Black', sans-serif;">
                         Seja bem-vindo(a)</h1>
-                    <div class="mb-5" th:if="${session.userSession}" th:each="usuario: ${usuario}">
+                    <div class="mb-5">
                         <h1 style="font-size: 50px; color: #FFF; margin-left: 35px; font-family: 'Cloister Black', sans-serif;"
                             th:text="${session.userSession.nome}"></h1>
                     </div>

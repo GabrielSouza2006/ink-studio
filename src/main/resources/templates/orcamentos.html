@@ -30,7 +30,7 @@
                     <a th:href="@{/home}">Home</a>
                     <a th:href="@{/usuarios/login}">Login</a>
                     <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
-                  </div>
+                </div>
 
                 <div class="redes">
                     <div class="as2">
@@ -47,51 +47,52 @@
     <section class="container d-flex flex-column justify-content-center my-5">
         <h1 id="h2" class="mb-5">Orçamentos</h1>
         <form th:action="@{/orcamentos/cadastro}" th:object="${orcamento}" method="post" class="mt-5">
-
             <div class="container row">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Quantas horas você tem disponível?</p>
-                    <input type="text" style="max-width: 250px;" placeholder="2" th:text="${horas}">
+                    <input type="text" name="horasDisponiveis" style="max-width: 250px;" placeholder="2"
+                        th:value="${horas}">
                 </div>
 
-                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
+                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Tatuagem colorida?</p>
                     <div>
-                        <input type="radio" id="sim" name="fav_language" value="sim" th:text="${cor}">
+                        <input type="radio" id="sim" name="tatuagemColorida" value="sim" th:checked="${cor == 'sim'}">
                         <label for="sim">Sim</label><br>
-                        <input type="radio" id="nao" name="fav_language" value="nao" th:text="${cor}">
+                        <input type="radio" id="nao" name="tatuagemColorida" value="nao" th:checked="${cor == 'nao'}">
                         <label for="nao">Não</label><br>
                     </div>
                 </div>
 
                 <div class="col align-items-center align-content-center">
                     <p>Escolha seu tatuador/piercing</p>
-                    <select name="prof" id="prof" style="width: 250px;" th:text="${servico}">
-                        <option value="jessica">Jessica</option>
-                        <option value="Anardo">Anardo</option>
+                    <select name="profissional" id="prof" style="width: 250px;">
+                        <option value="jessica" th:selected="${servico == 'jessica'}">Jessica</option>
+                        <option value="anardo" th:selected="${servico == 'anardo'}">Anardo</option>
                     </select>
                 </div>
             </div>
 
             <div class="container row my-5">
-                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
+                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Digite uma data:</p>
-                    <input type="date" th:text="${data}">
+                    <input type="date" name="data" th:value="${data}">
                 </div>
 
-                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center ">
+                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Digite um horário:</p>
-                    <input type="text" placeholder="13:30" th:text="${horas}">
+                    <input type="text" name="horario" placeholder="13:30" th:value="${horas}">
                 </div>
 
                 <div class="col align-items-center align-content-center">
-                    <p>valor estimado:</p>
-                    <input type="text" placeholder="R$" th:text="${valor}">
+                    <p>Valor estimado:</p>
+                    <input type="text" name="valor" placeholder="R$" th:value="${valor}">
                 </div>
             </div>
 
-            <a class="link-button"><button id="concluir">Enviar</button></a>
+            <button type="submit" id="concluir">Enviar</button>
         </form>
+
     </section>
 
     <footer class="container-fluid d-flex justify-content-center mt-5">

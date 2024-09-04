@@ -56,22 +56,14 @@ public class UsuarioController {
 		Usuario userSession = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
 
 		if (userSession != null) {
-			session.setAttribute("usuarioLogado", userSession);
+			session.setAttribute("userSession", userSession);
 			model.addAttribute("usuario", userSession);
-		} else {
-			model.addAttribute("erro", "usuario ou senha inválidos");
+			
+			return "pagina-principal";
 		}
+		
+		model.addAttribute("erro", "usuario ou senha inválidos");
 		return "login";
-	}
-
-	// Página principal controller
-	@GetMapping("/pagina-principal/{id}")
-	public ModelAndView paginaPrincipal(@PathVariable("id") Long id) {
-		ModelAndView mv = new ModelAndView("pagina-principal");
-		Usuario usuario = usuarioRepository.findById(id).orElse(null);
-		mv.addObject("usuario", usuario);
-
-		return mv;
 	}
 
 	// -------------------------- Alterar Usuario --------------------------
@@ -80,4 +72,6 @@ public class UsuarioController {
 
 		return "Perfil-cliente";
 	}
+	
+	// -------------------------- Orcamento --------------------------
 }
