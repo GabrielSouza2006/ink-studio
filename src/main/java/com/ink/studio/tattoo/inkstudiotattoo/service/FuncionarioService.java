@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
+import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
 
 @Service
@@ -50,5 +51,12 @@ public class FuncionarioService {
 
 		return fr.save(funcionario);
 	}
+	
+	public void desativarFuncionario(Long id) {
+        Funcionario func = fr.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        func.setStatusUsuario("INATIVO");
+        fr.save(func);
+    }
 
 }

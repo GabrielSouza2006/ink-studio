@@ -49,9 +49,15 @@
         <form th:action="@{/orcamentos/cadastro}" th:object="${orcamento}" method="post" class="mt-5">
             <div class="container row">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
-                    <p>Quantas horas você tem disponível?</p>
-                    <input type="text" name="horasDisponiveis" style="max-width: 250px;" placeholder="2"
-                        th:value="${horas}">
+                    <p>Selecione um horário:</p>
+                    <select name="profissional" id="prof" style="width: 250px;">
+                        <option value="jessica" th:selected="${horas == 8}">08:00</option>
+                        <option value="anardo" th:selected="${horas == 12}">12:00</option>
+                        <option value="anardo" th:selected="${horas == 14}">14:00</option>
+                        <option value="anardo" th:selected="${horas == 16}">16:00</option>
+                        <option value="anardo" th:selected="${horas == 18}">18:00</option>
+                        <option value="anardo" th:selected="${horas == 19}">19:00</option>
+                    </select>
                 </div>
 
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
@@ -77,11 +83,6 @@
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Digite uma data:</p>
                     <input type="date" name="data" th:value="${data}">
-                </div>
-
-                <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
-                    <p>Digite um horário:</p>
-                    <input type="text" name="horario" placeholder="13:30" th:value="${horas}">
                 </div>
 
                 <div class="col align-items-center align-content-center">

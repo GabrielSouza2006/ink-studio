@@ -55,16 +55,21 @@ public class UsuarioController {
 	@PostMapping("/login")
 	public String efetuarLogin(Model model, Usuario usuario, HttpSession session) {
 		Usuario userSession = this.usuarioRepository.login(usuario.getCpf(), usuario.getSenha());
-		
-		
+
 		if (userSession != null) {
+			// Verifica o status do usuário
+			if ("INATIVO".equals(userSession.getStatusUsuario())) {
+				model.addAttribute("erro", "Essa conta foi deletada!");
+				return "login";
+			}
+
+			// Se o status for ativo, inicia a sessão do usuário
 			session.setAttribute("userSession", userSession);
 			model.addAttribute("usuario", userSession);
-
 			return "pagina-principal";
 		}
 
-		model.addAttribute("erro", "usuario ou senha inválidos");
+		model.addAttribute("erro", "usuario ou senha inválidos!");
 		return "login";
 	}
 
@@ -94,9 +99,9 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/deletar-conta/{id}")
-    public String desativarUsuario(@PathVariable Long id) {
-        usuarioService.desativarUsuario(id);
-        
-        return "redirect:/usuarios/login";
-    }
+	public String desativarUsuario(@PathVariable Long id) {
+		usuarioService.desativarUsuario(id);
+
+		return "redirect:/usuarios/login";
+	}
 }
