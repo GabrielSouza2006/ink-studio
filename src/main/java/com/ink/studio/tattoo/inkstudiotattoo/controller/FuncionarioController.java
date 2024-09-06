@@ -1,4 +1,4 @@
-	package com.ink.studio.tattoo.inkstudiotattoo.controller;
+package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
 import java.io.IOException;
 
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -146,6 +145,14 @@ public class FuncionarioController {
 		funcionarioService.desativarFuncionario(id);
 
 		return "redirect:/usuarios/login";
+	}
+	
+	@PostMapping("/atualizar/{id}")
+	public String atualizarUsuario(@PathVariable Long id, Funcionario funcionario) {
+		
+		funcionarioService.atualizarFuncionario(id, funcionario);
+
+		return "redirect:/funcionarios/perfil";
 	}
 
 }

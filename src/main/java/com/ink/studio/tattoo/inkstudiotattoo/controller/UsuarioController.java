@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
@@ -96,6 +97,14 @@ public class UsuarioController {
 	public String editarCliente() {
 
 		return "perfil-cliente";
+	}
+	
+	@PostMapping("/atualizar/{id}")
+	public String atualizarUsuario(@PathVariable Long id, Usuario usuario) {
+		
+		usuarioService.atualizarUsuario(id, usuario);
+
+		return "redirect:/usuarios/perfil";
 	}
 
 	@PostMapping("/deletar-conta/{id}")

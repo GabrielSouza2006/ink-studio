@@ -29,6 +29,15 @@ public class UsuarioService {
 		return ur.existsById(id);
 	}
 
+	public void atualizarUsuario(Long id, Usuario usuario) {
+		Usuario user = ur.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
+		user.setNome(usuario.getNome());
+		user.setTelefone(usuario.getTelefone());
+		user.setEmail(usuario.getEmail());
+		
+		ur.save(user);
+	}
+	
 	public void desativarUsuario(Long id) {
         Usuario usuario = ur.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));

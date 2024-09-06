@@ -45,35 +45,29 @@
 
     <main>
         <div class="conteudo">
-            <div class="topo">
-                <div class="avatar">
-                    <img src="/imagens/avatar.png" id="avatar">
-                    <div>
-                        <button type="button" id="editar-foto">Editar foto de perfil</button>
-                    </div>
-                </div>
-
-
-                <div class="logo">
-                    <img src="/imagens/LogoINK.png" id="logo">
-                </div>
-
-            </div>
-
-
             <div class="baixo">
-                <form action="">
-                    <h2>Nome:</h2><input type="text" placeholder="Nome"><br>
-                    <h2>Data de Nacimento:</h2><input type="date" placeholder="18"><br>
-                    <h2>Telefone:</h2><input type="tel" placeholder="(99) 9999-9999"
-                        pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" title="Utilize esse formato: (99) 9999-9999"><br>
-                    <h2>Descrição:</h2><textarea placeholder="Descrição"
-                        style="width: 400px; height: 100px;"></textarea><br>
-                    <h2>Mídia</h2><button type="button" id="editar-foto">Adicionar mídia</button>
+                <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}" th:object="${funcionario}"
+                    method="post">
 
+                    <label>Digite seu nome:</label>
+                    <input name="nome" th:text="${nome}" type="text" required placeholder="Insira seu nome">
+
+                    <label>Digite seu email:</label>
+                    <input name="email" th:text="${email}" type="email" required placeholder="Insira seu email">
+
+                    <label>Digite seu telefone:</label>
+                    <input name="telefone" th:text="${telefone}" type="text" placeholder="Insira seu telefone"
+                        id="telefone">
+
+                    <label>Descrição:</label>
+                    <textarea name="descricao" th:text="${descricao}" type="text" rows="5"></textarea>
+
+                    <!-- <h2>Adicione uma foto do seu trabalho:</h2>
+                    <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;"> -->
+                    <div class="d-flex justify-content-between my-4">
+                        <button type="submit" name="Enviar">Enviar</button>
+                    </div>
                 </form>
-
-                <a href="Perfil-cliente.html"><button type="submit" id="pronto">Pronto</button></a>
             </div>
         </div>
     </main>
