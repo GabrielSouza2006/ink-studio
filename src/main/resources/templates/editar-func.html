@@ -27,7 +27,8 @@
 
             <div class="links">
                 <div class="as">
-                    <a th:href="@{/funcionarios/cadastro}">Orçamentos</a>
+                    <a th:href="@{/funcionarios/pagina-principal}">Página principal</a>
+                    <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
                     <a th:href="@{/funcionarios/agenda}">Agenda</a>
                 </div>
 
@@ -43,27 +44,25 @@
         </nav>
     </header>
 
+
     <main>
         <div class="conteudo">
             <div class="baixo">
                 <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}" th:object="${funcionario}"
                     method="post">
 
-                    <label>Digite seu nome:</label>
-                    <input name="nome" th:text="${nome}" type="text" required placeholder="Insira seu nome">
-
                     <label>Digite seu email:</label>
-                    <input name="email" th:text="${email}" type="email" required placeholder="Insira seu email">
+                    <input name="email" th:text="${email}" required type="email" placeholder="Insira seu email">
 
                     <label>Digite seu telefone:</label>
-                    <input name="telefone" th:text="${telefone}" type="text" placeholder="Insira seu telefone"
+                    <input name="telefone" th:text="${telefone}" required type="text" placeholder="Insira seu telefone"
                         id="telefone">
 
                     <label>Descrição:</label>
-                    <textarea name="descricao" th:text="${descricao}" type="text" rows="5"></textarea>
+                    <textarea name="descricao" th:text="${descricao}" required type="text" rows="5"></textarea>
 
-                    <!-- <h2>Adicione uma foto do seu trabalho:</h2>
-                    <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;"> -->
+                    <h2>Adicione uma foto do seu trabalho:</h2>
+                    <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;">
                     <div class="d-flex justify-content-between my-4">
                         <button type="submit" name="Enviar">Enviar</button>
                     </div>

@@ -128,7 +128,7 @@ public class FuncionarioController {
 		return "pag-principal-func";
 
 	}
-	
+
 	// Perfil funcionario
 	@GetMapping("/perfil")
 	public String perfilFuncionario() {
@@ -146,13 +146,41 @@ public class FuncionarioController {
 
 		return "redirect:/usuarios/login";
 	}
-	
+
 	@PostMapping("/atualizar/{id}")
 	public String atualizarUsuario(@PathVariable Long id, Funcionario funcionario) {
-		
+
 		funcionarioService.atualizarFuncionario(id, funcionario);
 
 		return "redirect:/funcionarios/perfil";
+	}
+
+	// -------------------------- Esqueci a senha --------------------------
+	@GetMapping("/trocar-senha")
+	public String esquiciSenha() {
+		return "recuperar-senha-funcionario";
+	}
+
+	@PostMapping("/trocar-senha")
+	public String confirirParaTrocarSenha(Model model, Funcionario funcionario, HttpSession session) {
+		Funcionario userSession = this.funcionarRepository.trocarSenha(funcionario.getCpf(), funcionario.getEmail());
+
+		if (userSession != null) {
+			session.setAttribute("userSession", userSession);
+			model.addAttribute("funcionario", userSession);
+
+			return "trocar-senha-funcionario";
+		}
+		model.addAttribute("erro", "CPF e senha não correspondem!");
+		return "recuperar-senha-funcionario";
+	}
+
+	@PostMapping("/atualizar-senha/{id}")
+	public String atualizarSenha(@PathVariable Long id, Funcionario funcionario) {
+
+		funcionarioService.atualizarSenha(id, funcionario);
+
+		return "redirect:/funcionarios/login";
 	}
 
 }

@@ -26,7 +26,8 @@
 
             <div class="links">
                 <div class="as">
-                    <a th:href="@{/funcionarios/cadastro}">Orçamentos</a>
+                    <a th:href="@{/funcionarios/pagina-principal}">Página principal</a>
+                    <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
                     <a th:href="@{/funcionarios/agenda}">Agenda</a>
                 </div>
 
@@ -41,6 +42,7 @@
             </div>
         </nav>
     </header>
+
 
     <div class=fto>
         <img th:src="${session.userSession.fotoPerfil} ? @{${'/funcionarios/showImage/'+ session.userSession.id}}"

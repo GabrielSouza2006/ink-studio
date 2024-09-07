@@ -52,14 +52,20 @@ public class FuncionarioService {
 
 	public void atualizarFuncionario(Long id, Funcionario funcionario) {
 		Funcionario func = fr.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
-		func.setNome(funcionario.getNome());
 		func.setDescricao(funcionario.getDescricao());
 		func.setTelefone(funcionario.getTelefone());
 		func.setEmail(funcionario.getEmail());
 		
 		fr.save(func);
 	}
-
+	
+	public void atualizarSenha(Long id, Funcionario funcionario) {
+		Funcionario func = fr.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
+		func.setSenha(funcionario.getSenha());
+		
+		fr.save(func);
+	}
+	
 	public void desativarFuncionario(Long id) {
 		Funcionario func = fr.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 		func.setStatusUsuario("INATIVO");

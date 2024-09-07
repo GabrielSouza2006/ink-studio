@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
@@ -67,11 +66,16 @@ public class UsuarioController {
 			// Se o status for ativo, inicia a sessão do usuário
 			session.setAttribute("userSession", userSession);
 			model.addAttribute("usuario", userSession);
-			return "pagina-principal";
+			return "redirect:/usuarios/pagina-principal";
 		}
 
 		model.addAttribute("erro", "usuario ou senha inválidos!");
 		return "login";
+	}
+
+	@GetMapping("pagina-principal")
+	public String paginaPrincipal() {
+		return "pagina-principal";
 	}
 
 	@GetMapping("/logoff")
@@ -90,7 +94,7 @@ public class UsuarioController {
 
 	@GetMapping("/editar-cliente")
 	public String paginaEditarCliente() {
-		return "editar-func";
+		return "Editar-cliente";
 	}
 
 	@PutMapping("/editar-cliente")
@@ -98,18 +102,46 @@ public class UsuarioController {
 
 		return "perfil-cliente";
 	}
-	
+
 	@PostMapping("/atualizar/{id}")
-	public String atualizarUsuario(@PathVariable Long id, Usuario usuario) {
-		
+	public String atualizarUsuario(@PathVariable Long id, Usuario usuario, HttpSession session) {
+
 		usuarioService.atualizarUsuario(id, usuario);
 
-		return "redirect:/usuarios/perfil";
+		return "redirect:/usuarios/pagina-principal";
 	}
 
 	@PostMapping("/deletar-conta/{id}")
 	public String desativarUsuario(@PathVariable Long id) {
 		usuarioService.desativarUsuario(id);
+
+		return "redirect:/usuarios/login";
+	}
+
+	// -------------------------- Esqueci a senha --------------------------
+	@GetMapping("/trocar-senha")
+	public String esquiciSenha() {
+		return "recuperar-senha";
+	}
+
+	@PostMapping("/trocar-senha")
+	public String confirirParaTrocarSenha(Model model, Usuario usuario, HttpSession session) {
+		Usuario userSession = this.usuarioRepository.trocarSenha(usuario.getCpf(), usuario.getEmail());
+
+		if (userSession != null) {
+			session.setAttribute("userSession", userSession);
+			model.addAttribute("usuario", userSession);
+			
+			return "trocar-senha";
+		}
+		model.addAttribute("erro", "CPF e senha não correspondem!");
+		return "recuperar-senha";
+	}
+
+	@PostMapping("/atualizar-senha/{id}")
+	public String atualizarSenha(@PathVariable Long id, Usuario usuario) {
+		
+		usuarioService.atualizarSenha(id, usuario);
 
 		return "redirect:/usuarios/login";
 	}

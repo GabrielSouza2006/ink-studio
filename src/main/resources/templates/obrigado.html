@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../CSS/fale-conosco.css">
+    <link rel="stylesheet" href="/CSS/fale-conosco.css">
+    <link rel="stylesheet" href="/CSS/cabeca-rodape.css">
     <style>
         @import url('https://fonts.cdnfonts.com/css/cloister-black');
         @import url('https://fonts.cdnfonts.com/css/great-vibes');
@@ -35,7 +36,30 @@
 </head>
 
 <body>
+    <header class="d-flex justify-content-center">
+        <nav class="container-fluid menu px-5">
+            <div class="container" style="max-width: 510px;">
+                <p class="plogo">O melhor site de tatuagem do Brasil!</p>
+            </div>
 
+            <div class="links">
+                <div class="as">
+                    <a th:href="@{/usuarios/pagina-principal}">Página principal</a>
+                    <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
+                    <a th:href="@{/usuarios/agenda}">Agenda</a>
+                </div>
+
+                <div class="redes">
+                    <div class="as2">
+                        <a href="https://www.instagram.com/">
+                            <img src="/imagens/insta.png" width="50px" height="50px"></a>
+                        <a href="https://www.facebook.com">
+                            <img src="/imagens/face.png" width="50px" height="50px"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
 
 

@@ -26,9 +26,9 @@
 
             <div class="links">
                 <div class="as">
-                    <a th:href="@{/usuarios/pagina-principal}">Página principal</a>
+                    <a th:href="@{/funcionarios/pagina-principal}">Página principal</a>
                     <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
-                    <a th:href="@{/usuarios/agenda}">Agenda</a>
+                    <a th:href="@{/funcionarios/agenda}">Agenda</a>
                 </div>
 
                 <div class="redes">
@@ -47,7 +47,7 @@
     <main>
         <div class="container-recuperar-senha">
 
-            <form th:action="@{/usuarios/atualizar-senha/{id}(id=${session.userSession.id})}" th:object="${usuario}"
+            <form th:action="@{/funcionarios/atualizar-senha/{id}(id=${session.userSession.id})}" th:object="${funcionario}"
                 method="post">
                 <img src="/imagens/LogoINK.png" alt="">
                 <h1>Recuperar senha</h1>

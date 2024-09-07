@@ -31,9 +31,15 @@ public class UsuarioService {
 
 	public void atualizarUsuario(Long id, Usuario usuario) {
 		Usuario user = ur.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
-		user.setNome(usuario.getNome());
 		user.setTelefone(usuario.getTelefone());
 		user.setEmail(usuario.getEmail());
+		
+		ur.save(user);
+	}
+	
+	public void atualizarSenha(Long id, Usuario usuario) {
+		Usuario user = ur.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
+		user.setSenha(usuario.getSenha());
 		
 		ur.save(user);
 	}

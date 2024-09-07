@@ -16,47 +16,31 @@
 </head>
 
 <body>
-    <header>
-        <nav class="menu" style="margin-bottom: 0;">
-            <a href="#"><img src="./../imagens/seta-voltar-com-traco.png" width="60px" height="60px"></a>
-
-            <ul>
-                <li class="dropdown">
-                    <a href=""><img src="./../imagens/menu.png"></a>
-    
-                    <div class="dropdown-menu">
-                        <a href="Cadastro.html" target="_self">Cadastro</a>
-                    <a href="Home.html" target="_self">Chat</a>
-                    <a href="Painel.html" target="_self">Carrinho</a>
-                    <a href="FaleConosco.html" target="_self">Fale conosco</a>
-                    </ul>
-            
-
-            <div class="logo">
-                <a href="Home.html">
-                    <img src="./../imagens/LogoINK.png" style="height: 120px; width: 120px; border-radius: 50%;"></a>
+    <header class="d-flex justify-content-center">
+        <nav class="container-fluid menu px-5">
+            <div class="container" style="max-width: 510px;">
                 <p class="plogo">O melhor site de tatuagem do Brasil!</p>
             </div>
 
             <div class="links">
                 <div class="as">
-                <a href="Login.html">Login</a>
-                <a href="Loja.html">Loja</a>
-                <a href="#">Orçamentos</a>
+                    <a th:href="@{/funcionarios/pagina-principal}">Página principal</a>
+                    <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
+                    <a th:href="@{/funcionarios/agenda}">Agenda</a>
                 </div>
 
                 <div class="redes">
                     <div class="as2">
-                    <a href="https://www.instagram.com/">
-                        <img src="./../imagens/insta.png" width="50px" height="50px"></a>
-
-                    <a href="https://www.facebook.com">
-                        <img src="./../imagens/face.png" width="50px" height="50px"></a>
+                        <a href="https://www.instagram.com/">
+                            <img src="/imagens/insta.png" width="50px" height="50px"></a>
+                        <a href="https://www.facebook.com">
+                            <img src="/imagens/face.png" width="50px" height="50px"></a>
+                    </div>
                 </div>
-
             </div>
         </nav>
     </header>
+
 
     <main>
         <div class="conteudo">
