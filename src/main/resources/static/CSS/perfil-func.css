@@ -1,8 +1,8 @@
-*{
+* {
     margin: 0;
 }
 
-body{
+body {
     background: #1A1A1A;
 }
 
@@ -10,18 +10,37 @@ body{
     display: flex;
 }
 
-
-.avatar{
+main {
+    height: 70vh;
     display: flex;
-    background: #1A1A1A;
-    width: 200px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: center;
+    justify-content: center;
 }
 
+h3 {
+    font-size: 2rem;
+    color: #FFF !important;
+}
 
-.seta-voltar a{
+h2 {
+    font-size: 2rem;
+    color: #FFF !important;
+}
+
+.foto-funcionario{
+    align-items: center;
+}
+
+.btns-funcionario{
+    gap: 30px;
+}
+
+.container-editar-funcionario{
+    border: 1px #FFF solid;
+    border-radius: 10px;
+}
+
+.seta-voltar a {
     display: flex;
     width: 80px;
     height: 80px;
@@ -31,7 +50,7 @@ body{
 }
 
 
-.dados-cliente{
+.dados-cliente {
     display: inline-block;
     color: white;
     align-self: center;
@@ -39,11 +58,7 @@ body{
     margin-left: 30px;
 }
 
-.dados-cliente h2{
-    margin-bottom: 10px;
-}
-
-button{
+button {
     border: none;
     display: flex;
     margin-left: auto;
@@ -57,52 +72,48 @@ button{
     font-size: 24px;
     margin-top: 100px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    
-    font-weight:bold 
 
+    font-weight: bold
 }
-button:hover{
+
+button:hover {
     background: #f5f5f5;
     color: #101026;
     transition-duration: 1s;
     border-radius: 16px;
 }
 
-.link-button{
+.link-button {
     text-decoration: none;
 }
 
-footer{
+footer {
     background-color: black;
     color: white;
     font-size: 20px;
     margin-top: 30px;
 }
 
-.rodape{
+.rodape {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#suporte-link{
+#suporte-link {
     color: white;
     font-size: 20px;
     text-decoration: underline;
 }
 
-.mid{
+.mid {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    
+
 }
 
-.dados-cliente h2{
-    margin-bottom: 30px;
-}
-
-.mid img{
+.mid img {
     width: 40px;
     height: 40px;
     position: relative;
@@ -110,13 +121,12 @@ footer{
     margin-left: 10px;
 }
 
-.fto img{
+.fto img {
     width: 200px;
     height: 200px;
 }
 
-.fto{
+.fto {
     display: flex;
     justify-content: center;
 }
-

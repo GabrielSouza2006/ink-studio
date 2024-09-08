@@ -8,37 +8,12 @@ body{
     background: #1A1A1A;
 }
 
-
-.container-editar-cliente{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    margin-top: 20px;
-    width: 35rem;
-    height: 80vh;
-    margin: 0 auto;
-    outline: 2px solid white;
-    border-radius: 10px;
-}
-
-
-.container-editar-cliente img{
-    width: 200px;
-    height: 200px;
-}
-
-.container-editar-cliente img, button {
-    margin-bottom: 20px;
-}
-
 .container-editar-cliente h2{
     margin-bottom: 2px;
     font-size: 21px;
 }
 
-.container-editar-cliente button{
+.editar-cliente-button{
     width: 200px;
     padding: 20px;
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -61,11 +36,14 @@ body{
     margin-bottom: 20px;
 }
 
+h3 {
+  font-size: 2rem;
+  color: #FFF !important;
+}
+
 .link-button{
     text-decoration: none;
 }
-
-
 
 .flip-card {
     background-color: transparent;

@@ -42,31 +42,33 @@
     </nav>
   </header>
 
-
-  <div class="container-editar-cliente">
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <div class="profile-image">
-            <div class="name">
-              <h2 th:text="${session.userSession.nome}"></h2>
-              <h2 th:text="${session.userSession.telefone}"></h2>
-              <h2 th:text="${session.userSession.email}"></h2>
-            </div>
-          </div>
+  <main>
+    <div class="container-editar-cliente d-flex flex-column justify-content-center">
+      <div class="d-flex flex-column justify-content-center text-start mt-5 mx-5">
+        <div class="d-flex flex-row">
+          <h3>Nome:</h3>
+          <h2 class="mx-2" th:text="${session.userSession.nome}"></h2>
+        </div>
+        <div class="d-flex flex-row">
+          <h3>telefone:</h3>
+          <h2 class="mx-2" th:text="${session.userSession.telefone}"></h2>
+        </div>
+        <div class="d-flex flex-row">
+          <h3>E-mail:</h3>
+          <h2 class="mx-2" th:text="${session.userSession.email}"></h2>
         </div>
       </div>
-    </div>
+      <div class="d-flex flex-row justify-content-around btns-cliente mb-5 mx-5">
+        <form th:action="@{/usuarios/deletar-conta/{id}(id=${session.userSession.id})}" method="post"
+          onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
+          <input type="hidden" name="_method" value="delete" />
+          <button type="submit" class="btn-danger">Deletar conta</button>
+        </form>
 
-    <div>
-      <form th:action="@{/usuarios/deletar-conta/{id}(id=${session.userSession.id})}" method="post"
-        onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
-        <input type="hidden" name="_method" value="delete" />
-        <button type="submit" class="btn-danger">Deletar conta</button>
-      </form>
+        <a class="link-button" th:href="@{/usuarios/editar-cliente}"><button type="button">Editar</button></a>
+      </div>
     </div>
-    <a th:href="@{/usuarios/editar-cliente}"><button type="button">Editar informações</button></a>
-  </div>
+  </main>
 </body>
 
 </html>

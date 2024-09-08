@@ -1,13 +1,13 @@
-* {
-    margin: 0;
+*{
+    margin: 0px;
 }
 
-body {
-    background: #1A1A1A;
+body{
+    background: #1A1A1A !important;
 }
 
 main {
-    height: 70vh;
+    height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,11 +21,13 @@ h3 {
 h2 {
     font-size: 2rem;
     color: #FFF !important;
+    text-align: center;
 }
 
-.container-editar-funcionario {
+.container-fale-conosco{
     border: 1px #FFF solid;
     border-radius: 10px;
+    align-items: center;
 }
 
 input {
@@ -66,29 +68,4 @@ button:hover {
 
 .link-button {
     text-decoration: none;
-}
-
-.btns-editar {
-    gap: 30px
-}
-
-/*-----FOOTER-----*/
-footer {
-    background-color: black;
-    color: white;
-    font-size: 20px;
-    margin-top: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.rodape {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-#suporte-link {
-    color: white;
-    font-size: 20px;
-    text-decoration: underline;
 }
