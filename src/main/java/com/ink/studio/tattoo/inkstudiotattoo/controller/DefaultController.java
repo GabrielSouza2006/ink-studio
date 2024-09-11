@@ -20,8 +20,8 @@ public class DefaultController {
 	FuncionarioService funcionarioService;
 
 	@GetMapping("/home")
-	public String cadastro() {
-		return "Home";
+	public String home() {
+		return "home";
 	}
 
 	@GetMapping("/profissionais")

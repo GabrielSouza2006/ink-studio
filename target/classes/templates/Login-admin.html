@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="../CSS/login.css">
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../CSS/cabeca-rodape.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/cloister-black');
+    @import url('https://fonts.cdnfonts.com/css/great-vibes');
+  </style>
+</head>
+
+<body style="background-color: #000 !important;">
+  <header class="d-flex justify-content-center">
+    <nav class="container-fluid menu px-5">
+      <div class="container" style="max-width: 510px;">
+        <p class="plogo">O melhor site de tatuagem do Brasil!</p>
+      </div>
+
+      <div class="links">
+        <div class="as">
+          <a th:href="@{/home}">Home</a>
+          <a th:href="@{/usuarios/login}">Login</a>
+          <a th:href="@{/usuarios/cadastro}">Orçamentos</a>
+        </div>
+
+        <div class="redes">
+          <div class="as2">
+            <a href="https://www.instagram.com/">
+              <img src="../imagens/insta.png" width="50px" height="50px"></a>
+            <a href="https://www.facebook.com">
+              <img src="../imagens/face.png" width="50px" height="50px"></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="container-fluid d-flex justify-content-center row">
+    <div class="col d-flex justify-content-center">
+
+      <form method="post" th:object="${funcionario}" th:action="@{/admin/login}">
+        <h2>Login</h2>
+        <label>Email:</label>
+        <input id="email" type="text" name="email" th:text="${email}" required placeholder="Insira seu email">
+
+        <br>
+        <label>Senha:</label>
+        <input type="password" name="senha" th:text="${senha}" required placeholder="Insira sua senha">
+
+        <br>
+        <div th:if="${erro != null}" th:text="${erro}" role="alert" style="color: red;"></div>
+        <button type="submit" name="Entrar">Entrar</button><br>
+      </form>
+
+    </div>
+
+    <div class="col d-flex justify-content-center align-items-center">
+      <div class="d-flex flex-column">
+        <img src="/imagens/LogoINK.png" alt="LOGO" width="400" height="400">
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

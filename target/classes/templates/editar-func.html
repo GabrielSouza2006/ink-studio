@@ -48,8 +48,7 @@
     <main>
         <div class="container-editar-funcionario">
             <div class="mx-5 my-5">
-                <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}"
-                    th:object="${funcionario}" method="post">
+                <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}" enctype="multipart/form-data" th:object="${funcionario}" method="post">
 
                     <h3>Digite seu email:</h3>
                     <input name="email" th:text="${email}" required type="email">
@@ -63,6 +62,7 @@
 
                     <h2>Adicione uma foto do seu trabalho:</h2>
                     <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;">
+
                     <div class="d-flex flex-row justify-content-center btns-editar my-5 mx-5">
                         <button type="submit" name="Enviar">Editar</button>
                         <a th:href="@{/funcionarios/perfil}"><button type="button" name="Cancelar">Cancelar</button></a>

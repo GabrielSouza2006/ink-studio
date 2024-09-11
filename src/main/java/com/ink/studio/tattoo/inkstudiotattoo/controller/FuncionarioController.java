@@ -148,9 +148,9 @@ public class FuncionarioController {
 	}
 
 	@PostMapping("/atualizar/{id}")
-	public String atualizarUsuario(@PathVariable Long id, Funcionario funcionario) {
+	public String atualizarUsuario(@PathVariable Long id, Funcionario funcionario, @RequestParam(value = "file", required = false) MultipartFile file) {
 
-		funcionarioService.atualizarFuncionario(id, funcionario);
+		funcionarioService.atualizarFuncionario(id, funcionario, file);
 
 		return "redirect:/funcionarios/perfil";
 	}

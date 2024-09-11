@@ -21,7 +21,7 @@ public class UsuarioService {
 		if (ur.existsByCpf(usuario.getCpf())) {
 			throw new IllegalArgumentException("CPF Inválido!");
 		}
-		
+
 		return ur.save(usuario);
 	}
 
@@ -33,22 +33,27 @@ public class UsuarioService {
 		Usuario user = ur.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
 		user.setTelefone(usuario.getTelefone());
 		user.setEmail(usuario.getEmail());
-		
+
 		ur.save(user);
 	}
-	
+
 	public void atualizarSenha(Long id, Usuario usuario) {
 		Usuario user = ur.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
 		user.setSenha(usuario.getSenha());
-		
+
 		ur.save(user);
 	}
-	
+
 	public void desativarUsuario(Long id) {
-        Usuario usuario = ur.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        usuario.setStatusUsuario("INATIVO");
-        ur.save(usuario);
-    }
+		Usuario usuario = ur.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+		usuario.setStatusUsuario("INATIVO");
+		ur.save(usuario);
+	}
+
+	public void ativarUsuario(Long id) {
+		Usuario usuario = ur.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+		usuario.setStatusUsuario("ATIVO");
+		ur.save(usuario);
+	}
 
 }

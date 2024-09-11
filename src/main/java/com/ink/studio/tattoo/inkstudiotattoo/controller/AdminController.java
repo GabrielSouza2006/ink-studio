@@ -1,7 +1,10 @@
 package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,36 @@ public class AdminController {
 	@Autowired
 	FuncionarioService fs;
 
+	@GetMapping("/login")
+	public String loginPagina() {
+		return "login-admin";
+	}
+
+	@PostMapping("/login")
+	public String login(Model model, Funcionario funcionario, HttpSession session) {
+		Funcionario userSession = this.fr.loginAdmin(funcionario.getEmail(), funcionario.getSenha());
+
+		if (userSession != null) {
+			// Verifica o status do usuário
+			if ("INATIVO".equals(userSession.getStatusUsuario())) {
+				model.addAttribute("erro", "Essa conta foi deletada!");
+				return "login-admin";
+			} else if ("ADMIN".equals(userSession.getStatusUsuario())) {
+				session.setAttribute("userSession", userSession);
+				model.addAttribute("funcionario", userSession);
+				return "redirect:/admin/pagina-principal";
+			}
+		}
+
+		model.addAttribute("erro", "usuario ou senha inválidos!");
+		return "login-admin";
+	}
+	
+	@GetMapping("/pagina-principal")
+	public String paginaPrincipal() {
+		return "pagina-principal-admin";
+	}
+
 	@GetMapping("/listar-funcionarios")
 	public ModelAndView listarFuncionarios() {
 
@@ -34,22 +67,22 @@ public class AdminController {
 		return mv;
 	}
 
-	//@DeleteMapping(path = "/deletar-func/{id}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@PostMapping("/deletar-func/{id}")
 	public String excluirFuncionario(@PathVariable Long id) {
-		if (fs.existsById(id)) {
-			fs.deleteById(id);
-			return "redirect:/admin/listar-funcionarios";
-		} else {
-			return "redirect:/admin/listar-funcionarios";
-		}
+		fs.desativarFuncionario(id);
+		return "redirect:/admin/listar-funcionarios";
 	}
-	
+	@PostMapping("/ativar-func/{id}")
+	public String ativarFuncionario(@PathVariable Long id) {
+		fs.ativarFuncionario(id);
+		return "redirect:/admin/listar-funcionarios";
+	}
+
 	@Autowired
 	UsuarioRepository ur;
 	@Autowired
 	UsuarioService us;
-	
+
 	@GetMapping("/listar-usuarios")
 	public ModelAndView listarUsuarios() {
 
@@ -60,14 +93,16 @@ public class AdminController {
 		return mv;
 	}
 
-	//@DeleteMapping(path = "/deletar-user/{id}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@PostMapping("/deletar-user/{id}")
 	public String excluirUsuario(@PathVariable Long id) {
-		if (ur.existsById(id)) {
-			ur.deleteById(id);
-			return "redirect:/admin/listar-usuarios";
-		} else {
-			return "redirect:/admin/listar-usuarios";
-		}
+		us.desativarUsuario(id);
+		return "redirect:/admin/listar-usuarios";
 	}
+	
+	@PostMapping("/ativar-user/{id}")
+	public String ativarUsuario(@PathVariable Long id) {
+		us.ativarUsuario(id);
+		return "redirect:/admin/listar-usuarios";
+	}
+
 }

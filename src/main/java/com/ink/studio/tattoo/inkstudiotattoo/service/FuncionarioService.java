@@ -50,11 +50,20 @@ public class FuncionarioService {
 		return fr.save(funcionario);
 	}
 
-	public void atualizarFuncionario(Long id, Funcionario funcionario) {
+	public void atualizarFuncionario(Long id, Funcionario funcionario, MultipartFile file) {
 		Funcionario func = fr.findById(id).orElseThrow(() -> new RuntimeException("Falha"));
 		func.setDescricao(funcionario.getDescricao());
 		func.setTelefone(funcionario.getTelefone());
 		func.setEmail(funcionario.getEmail());
+		if (file != null && file.getSize() > 0) {
+			try {
+				func.setFotoTattoo(file.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			func.setFotoTattoo(null);
+		}
 		
 		fr.save(func);
 	}
@@ -69,6 +78,12 @@ public class FuncionarioService {
 	public void desativarFuncionario(Long id) {
 		Funcionario func = fr.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 		func.setStatusUsuario("INATIVO");
+		fr.save(func);
+	}
+	
+	public void ativarFuncionario(Long id) {
+		Funcionario func = fr.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+		func.setStatusUsuario("ATIVO");
 		fr.save(func);
 	}
 
