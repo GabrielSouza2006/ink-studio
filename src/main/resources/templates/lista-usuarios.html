@@ -8,13 +8,13 @@
 		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body style="background-color: rgb(80, 80, 80);">	
+<body style="background-color: rgb(80, 80, 80);">
 	<main>
 		<div class="d-flex flex-row justify-content-between" style="gap: 20px;">
-			<h1 style="color: #FFF;">Clientes</h1>
 			<a th:href="@{/admin/pagina-principal/}" style="margin-right: 60px;">
 				<h1 style="color: #FFF;">Voltar</h1>
 			</a>
+			<h1 style="color: #FFF;">Clientes</h1>
 		</div>
 		<table class="table">
 			<thead>
@@ -24,7 +24,7 @@
 					<th scope="col">Email</th>
 					<th scope="col">Telefone</th>
 					<th scope="col">Status do usuário</th>
-					<th scope="col">Excluir permanentemente</th>
+					<th scope="col">Ações</th>
 				</tr>
 			</thead>
 			<tbody>

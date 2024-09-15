@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
+import com.ink.studio.tattoo.inkstudiotattoo.model.Orcamentos;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
+import com.ink.studio.tattoo.inkstudiotattoo.repositories.OrcamentosRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.FuncionarioService;
+import com.ink.studio.tattoo.inkstudiotattoo.service.OrcamentosService;
 import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
 
 @Controller
@@ -26,6 +29,16 @@ public class AdminController {
 	FuncionarioRepository fr;
 	@Autowired
 	FuncionarioService fs;
+	
+	@Autowired
+	UsuarioRepository ur;
+	@Autowired
+	UsuarioService us;
+	
+	@Autowired
+	OrcamentosRepository or;
+	@Autowired
+	OrcamentosService os;
 
 	@GetMapping("/login")
 	public String loginPagina() {
@@ -33,8 +46,8 @@ public class AdminController {
 	}
 
 	@PostMapping("/login")
-	public String login(Model model, Funcionario funcionario, HttpSession session) {
-		Funcionario userSession = this.fr.loginAdmin(funcionario.getEmail(), funcionario.getSenha());
+	public String login(Model model, Usuario usuario, HttpSession session) {
+		Usuario userSession = this.ur.loginAdmin(usuario.getEmail(), usuario.getSenha());
 
 		if (userSession != null) {
 			// Verifica o status do usuário
@@ -57,6 +70,8 @@ public class AdminController {
 		return "pagina-principal-admin";
 	}
 
+	// ---------------- Funcionarios
+	
 	@GetMapping("/listar-funcionarios")
 	public ModelAndView listarFuncionarios() {
 
@@ -77,11 +92,8 @@ public class AdminController {
 		fs.ativarFuncionario(id);
 		return "redirect:/admin/listar-funcionarios";
 	}
-
-	@Autowired
-	UsuarioRepository ur;
-	@Autowired
-	UsuarioService us;
+	
+	// ---------------- Usuarios
 
 	@GetMapping("/listar-usuarios")
 	public ModelAndView listarUsuarios() {
@@ -103,6 +115,29 @@ public class AdminController {
 	public String ativarUsuario(@PathVariable Long id) {
 		us.ativarUsuario(id);
 		return "redirect:/admin/listar-usuarios";
+	}
+	
+	// ---------------- Orcamentos
+	@GetMapping("/listar-orcamentos")
+	public ModelAndView listarOrcamentos() {
+
+		ModelAndView mv = new ModelAndView("lista-orcamentos");
+		Iterable<Orcamentos> orcamento = or.findAll();
+		mv.addObject("orcamento", orcamento);
+
+		return mv;
+	}
+
+	@PostMapping("/deletar-orcamento/{id}")
+	public String excluirOrcamento(@PathVariable Long id) {
+		os.desativarOrcamento(id);
+		return "redirect:/admin/listar-orcamentos";
+	}
+	
+	@PostMapping("/ativar-orcamento/{id}")
+	public String ativarOrcamentos(@PathVariable Long id) {
+		os.ativarOrcamento(id);
+		return "redirect:/admin/listar-orcamentos";
 	}
 
 }

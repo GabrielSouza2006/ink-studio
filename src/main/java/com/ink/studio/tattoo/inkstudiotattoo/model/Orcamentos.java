@@ -22,6 +22,7 @@ public class Orcamentos {
 	private String cor;
 	private String horas;
 	private LocalDate data;
+	private String statusOrcamento;
 	@ManyToOne
 	@JoinColumn(name = "Id_funcionario")
 	private Funcionario funcionario;
@@ -29,6 +30,25 @@ public class Orcamentos {
 	@JoinColumn(name = "Id_usuario")
 	private Usuario usuario;
 	
+	
+	public String getStatusOrcamento() {
+		return statusOrcamento;
+	}
+	public void setStatusOrcamento(String statusOrcamento) {
+		this.statusOrcamento = statusOrcamento;
+	}
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	public LocalDate getData() {
 		return data;
 	}

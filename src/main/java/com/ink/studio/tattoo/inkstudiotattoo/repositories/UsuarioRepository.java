@@ -14,6 +14,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 	
 	@Query(value = "select * from usuario where cpf = :cpf and email = :email", nativeQuery = true)
 	public Usuario trocarSenha(String cpf, String email);
+	
+	@Query(value = "select * from usuario where email = :email and senha = :senha", nativeQuery = true)
+	public Usuario loginAdmin(String email, String senha);
 
 	boolean existsByCpf(String cpf);
 }
