@@ -46,44 +46,29 @@
 
 
     <main>
-        <div class="container-editar-funcionario">
-            <div class="mx-5 my-5">
-                <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}" enctype="multipart/form-data" th:object="${funcionario}" method="post">
+        <div class="container-editar-funcionario mx-5 my-5 p-5" style="margin-top: 300px !important;">
+            <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}"
+                enctype="multipart/form-data" th:object="${funcionario}" method="post">
 
-                    <h3>Digite seu email:</h3>
-                    <input name="email" th:text="${email}" required type="email">
+                <h3>Digite seu email:</h3>
+                <input name="email" th:text="${email}" required type="email">
 
-                    <h3>Digite seu telefone:</h3>
-                    <input name="telefone" th:text="${telefone}" required type="text" id="telefone">
+                <h3>Digite seu telefone:</h3>
+                <input name="telefone" th:text="${telefone}" required type="text" id="telefone">
 
-                    <h3>Descrição:</h3>
-                    <textarea name="descricao" th:text="${descricao}" required type="text" rows="5"
-                        cols="80"></textarea>
+                <h3>Descrição:</h3>
+                <textarea name="descricao" th:text="${descricao}" required type="text" rows="5" cols="80"></textarea>
 
-                    <h2>Adicione uma foto do seu trabalho:</h2>
-                    <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;">
+                <h2>Adicione uma foto do seu trabalho:</h2>
+                <input type="file" th:src="${fotoTattoo}" name="file" accept="image/*" style="color: #FFF;">
 
-                    <div class="d-flex flex-row justify-content-center btns-editar my-5 mx-5">
-                        <button type="submit" name="Enviar">Editar</button>
-                        <a th:href="@{/funcionarios/perfil}"><button type="button" name="Cancelar">Cancelar</button></a>
-                    </div>
-                </form>
-            </div>
+                <div class="d-flex flex-row justify-content-center btns-editar mt-5 mx-5">
+                    <button type="submit" name="Enviar">Editar</button>
+                    <a th:href="@{/funcionarios/perfil}"><button type="button" name="Cancelar">Cancelar</button></a>
+                </div>
+            </form>
         </div>
     </main>
-
-    <footer class="container-fluid d-flex justify-content-center mt-5">
-        <article class="row container">
-            <p class="col">Email: inkstudiotattoo@gmail.com<br>
-                Tel: +55 11 3242-2345 <br>
-                <a href="FaleConosco.html" id="suporte-link">Suporte</a>
-            </p>
-
-            <p class="col">Local: R. Interna Grupo Bandeirante, 2956-3006 - Jardim Belval<br> <br>
-                Estamos abertos de segunda a sexta das 8:00h ás 19:00h <br> e aos sábados das 8:00h ás 16:00h</p>
-        </article>
-    </footer>
-
 </body>
 
 </html>

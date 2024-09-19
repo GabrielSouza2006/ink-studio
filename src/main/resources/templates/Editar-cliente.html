@@ -45,15 +45,14 @@
   </header>
 
   <main>
-    <div class="conteudo">
-      <div class="baixo">
+      <div class="container-editar-cliente p-5">
         <form th:action="@{/usuarios/atualizar/{id}(id=${session.userSession.id})}" th:object="${usuario}"
           method="post">
 
-          <label>Digite seu email:</label>
+          <h3>Digite seu email:</h3>
           <input name="email" th:text="${email}" required type="email" placeholder="Insira seu email">
 
-          <label>Digite seu telefone:</label>
+          <h3>Digite seu telefone:</h3>
           <input name="telefone" th:text="${telefone}" type="text" required placeholder="Insira seu telefone" id="telefone">
 
           <div class="d-flex justify-content-between my-4">
@@ -61,7 +60,6 @@
           </div>
         </form>
       </div>
-    </div>
   </main>
 
   <footer class="container-fluid d-flex justify-content-center mt-5">
