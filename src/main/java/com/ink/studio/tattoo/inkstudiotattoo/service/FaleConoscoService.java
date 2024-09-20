@@ -16,5 +16,10 @@ public class FaleConoscoService {
 
 		return fcr.save(mensagem);
 	}
+	
+	public void deletarMensagem(Long id) {
+		FaleConosco men = fcr.findById(id).orElseThrow(() -> new RuntimeException("Mensagem não encontrado"));
+		fcr.delete(men);
+	}
 
 }

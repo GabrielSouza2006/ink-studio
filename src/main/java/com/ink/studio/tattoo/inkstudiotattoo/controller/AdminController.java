@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ink.studio.tattoo.inkstudiotattoo.model.FaleConosco;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Orcamentos;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
+import com.ink.studio.tattoo.inkstudiotattoo.repositories.FaleConoscoRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.OrcamentosRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
+import com.ink.studio.tattoo.inkstudiotattoo.service.FaleConoscoService;
 import com.ink.studio.tattoo.inkstudiotattoo.service.FuncionarioService;
 import com.ink.studio.tattoo.inkstudiotattoo.service.OrcamentosService;
 import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
@@ -39,6 +42,11 @@ public class AdminController {
 	OrcamentosRepository or;
 	@Autowired
 	OrcamentosService os;
+	
+	@Autowired
+	FaleConoscoRepository cr;
+	@Autowired
+	FaleConoscoService cs;
 
 	@GetMapping("/login")
 	public String loginPagina() {
@@ -139,5 +147,22 @@ public class AdminController {
 		os.ativarOrcamento(id);
 		return "redirect:/admin/listar-orcamentos";
 	}
+	
+	// ---------------- Mensagens
+		@GetMapping("/listar-mensagens")
+		public ModelAndView listarMensagem() {
+
+			ModelAndView mv = new ModelAndView("lista-mensagens");
+			Iterable<FaleConosco> mensagem = cr.findAll();
+			mv.addObject("mensagem", mensagem);
+
+			return mv;
+		}
+
+		@PostMapping("/deletar-mensagens/{id}")
+		public String excluirMensagem(@PathVariable Long id) {
+			cs.deletarMensagem(id);
+			return "redirect:/admin/listar-mensagens";
+		}
 
 }
