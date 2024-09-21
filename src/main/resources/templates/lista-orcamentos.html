@@ -34,7 +34,7 @@
 				<tr th:each="orcamento: ${orcamento}">
 					<th scope="row" th:text="${orcamento.id}"></th>
 					<td th:text="${orcamento.valor}"></td>
-					<td th:text="${orcamento.servico}"></td>
+					<td th:text="${orcamento.funcionario.servico}"></td>
 					<td th:text="${orcamento.cor}"></td>
 					<td th:text="${orcamento.usuario.nome}"></td>
 					<td th:text="${orcamento.funcionario.nome}"></td>

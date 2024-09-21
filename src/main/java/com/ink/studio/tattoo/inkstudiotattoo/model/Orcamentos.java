@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="orcamento")
 public class Orcamentos {
@@ -18,9 +20,9 @@ public class Orcamentos {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private double valor;
-	private String servico;
 	private String cor;
 	private String horas;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	private String statusOrcamento;
 	@ManyToOne
@@ -66,12 +68,6 @@ public class Orcamentos {
 	}
 	public void setValor(double valor) {
 		this.valor = valor;
-	}
-	public String getServico() {
-		return servico;
-	}
-	public void setServico(String servico) {
-		this.servico = servico;
 	}
 	public String getCor() {
 		return cor;

@@ -50,52 +50,43 @@
         <form th:action="@{/orcamentos/cadastro}" th:object="${orcamento}" method="post" class="mt-5">
             <div class="container row">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
-                    <p>Selecione um horário:</p>
-                    <select name="profissional" id="prof" style="width: 250px;">
-                        <option value="jessica" th:selected="${horas == 8}">08:00</option>
-                        <option value="anardo" th:selected="${horas == 12}">12:00</option>
-                        <option value="anardo" th:selected="${horas == 14}">14:00</option>
-                        <option value="anardo" th:selected="${horas == 16}">16:00</option>
-                        <option value="anardo" th:selected="${horas == 18}">18:00</option>
-                        <option value="anardo" th:selected="${horas == 19}">19:00</option>
-                    </select>
+                    <p>Digite quantas horas você tem disponível:</p>
+                    <input type="text" name="horas" th:field="*{horas}" placeholder="Min: 1h">
                 </div>
 
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
                     <p>Tatuagem colorida?</p>
                     <div>
-                        <input type="radio" id="sim" name="tatuagemColorida" value="sim" th:checked="${cor == 'sim'}">
+                        <input type="radio" id="sim" name="cor" value="Sim" th:field="*{cor}">
                         <label for="sim">Sim</label><br>
-                        <input type="radio" id="nao" name="tatuagemColorida" value="nao" th:checked="${cor == 'nao'}">
+                        <input type="radio" id="nao" name="cor" value="Não" th:field="*{cor}">
                         <label for="nao">Não</label><br>
+                        <input type="radio" id="nao" name="piercing" value="piercing" th:field="*{cor}">
+                        <label for="nao">Piercing</label><br>
                     </div>
                 </div>
 
                 <div class="col align-items-center align-content-center">
                     <p>Escolha seu tatuador/piercing</p>
-                    <select name="profissional" id="prof" style="width: 250px;">
-                        <option value="jessica" th:selected="${servico == 'jessica'}">Jessica</option>
-                        <option value="anardo" th:selected="${servico == 'anardo'}">Anardo</option>
+                    <select name="funcionario" id="prof" th:field="*{funcionario}" style="width: 250px;">
+                        <option th:each="funcionario : ${funcionarios}" th:value="${funcionario.id}"
+                            th:text="${funcionario.nome} + ' - ' + ${funcionario.servico}">
+                        </option>
                     </select>
                 </div>
             </div>
 
             <div class="container row my-5">
                 <div class="col align-items-center align-content-center d-flex flex-column justify-content-center">
-                    <p>Digite uma data:</p>
-                    <input type="date" name="data" th:value="${data}">
-                </div>
-
-                <div class="col align-items-center align-content-center">
-                    <p>Valor estimado:</p>
-                    <input type="text" name="valor" placeholder="R$" th:value="${valor}">
+                    <p>Selecione uma data:</p>
+                    <input type="date" name="data" th:field="*{data}">
                 </div>
             </div>
 
             <button type="submit" id="concluir">Enviar</button>
         </form>
-
     </section>
+
 
     <footer class="container-fluid d-flex justify-content-center mt-5">
         <article class="row container">

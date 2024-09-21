@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Orcamentos;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
+import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.OrcamentosService;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,26 +23,36 @@ public class OrcamentosController {
 
 	@Autowired
 	OrcamentosService os;
-	
+	@Autowired
+	FuncionarioRepository fr;
+
 	@GetMapping("/cadastro")
-	public String cadastro(HttpSession session, Model model) {
-	    // Suponha que o atributo da sessão é um usuário logado
-	    Object usuario = session.getAttribute("usuarioLogado");
+	public String cadastro(Model model) {
 
-	    // Se o usuário estiver logado, você pode adicionar informações ao modelo
-	    model.addAttribute("usuario", usuario);
+		Iterable<Funcionario> func = fr.findAll();
 
-	    // Retorna o nome da view a ser exibida
-	    return "orcamentos";
+		model.addAttribute("funcionarios", func);
+
+		model.addAttribute("orcamento", new Orcamentos());
+
+		return "orcamentos";
 	}
 
-
 	@PostMapping("/cadastro")
-	public String create(@ModelAttribute Orcamentos orcamento) {
+	public String create(@ModelAttribute Orcamentos orcamento, HttpSession session) {
+
+		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
+		
+		orcamento.setUsuario(usuarioLogado);
 		
 		os.gravarOrcamento(orcamento);
 
-		return "redirect:usuario/pagina-principal";
+		return "redirect:/orcamentos/obrigado";
+	}
+	
+	@GetMapping("obrigado")
+	public String obrigado() {
+		return "obrigado";
 	}
 
 }
