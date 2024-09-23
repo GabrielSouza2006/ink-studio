@@ -19,7 +19,6 @@ public class Orcamentos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private double valor;
 	private String cor;
 	private String horas;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -62,12 +61,6 @@ public class Orcamentos {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public double getValor() {
-		return valor;
-	}
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 	public String getCor() {
 		return cor;

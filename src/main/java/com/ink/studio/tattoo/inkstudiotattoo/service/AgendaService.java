@@ -20,4 +20,19 @@ public class AgendaService {
 		return ar.findById(id).get();
 	}
 	
+	public void ativarAgenda(Long id) {
+		Agenda agenda = ar.findById(id).orElseThrow(() -> new RuntimeException("Agenda não encontrado"));
+		
+		agenda.setStatusAgenda("ATIVO");
+		
+		ar.save(agenda);
+	}
+	
+	public void desativarAgenda(Long id) {
+		Agenda agenda = ar.findById(id).orElseThrow(() -> new RuntimeException("Agenda não encontrada"));
+		
+		agenda.setStatusAgenda("INATIVO");
+		
+		ar.save(agenda);
+	}
 }

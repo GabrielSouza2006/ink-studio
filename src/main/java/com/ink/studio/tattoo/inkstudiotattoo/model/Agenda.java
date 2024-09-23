@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="agenda")
 public class Agenda {
@@ -20,11 +22,12 @@ public class Agenda {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //Auto incremento do SQL Server
 	@Column(name = "id")
 	private Long id;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	private LocalTime horas;
 	private String servico;
-	private String profissional;
 	private double valor;
+	private String statusAgenda;
 	@ManyToOne
 	@JoinColumn(name = "Id_funcionario")
 	private Funcionario funcionario;
@@ -35,6 +38,12 @@ public class Agenda {
 	@JoinColumn(name = "Id_Orcamento")
 	private Orcamentos orcamento;
 	
+	public String getStatusAgenda() {
+		return statusAgenda;
+	}
+	public void setStatusAgenda(String statusAgenda) {
+		this.statusAgenda = statusAgenda;
+	}
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -76,12 +85,6 @@ public class Agenda {
 	}
 	public void setServico(String servico) {
 		this.servico = servico;
-	}
-	public String getProfissional() {
-		return profissional;
-	}
-	public void setProfissional(String profissional) {
-		this.profissional = profissional;
 	}
 	public double getValor() {
 		return valor;

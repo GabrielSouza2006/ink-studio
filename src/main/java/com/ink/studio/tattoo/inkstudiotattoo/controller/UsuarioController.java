@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
@@ -73,7 +72,7 @@ public class UsuarioController {
 		return "login";
 	}
 
-	@GetMapping("pagina-principal")
+	@GetMapping("/pagina-principal")
 	public String paginaPrincipal() {
 		return "pagina-principal";
 	}
@@ -92,19 +91,14 @@ public class UsuarioController {
 		return "Perfil-cliente";
 	}
 
+
 	@GetMapping("/editar-cliente")
 	public String paginaEditarCliente() {
 		return "Editar-cliente";
 	}
 
-	@PutMapping("/editar-cliente")
-	public String editarCliente() {
-
-		return "perfil-cliente";
-	}
-
 	@PostMapping("/atualizar/{id}")
-	public String atualizarUsuario(@PathVariable Long id, Usuario usuario, HttpSession session) {
+	public String atualizarUsuario(@PathVariable Long id, Usuario usuario) {
 
 		usuarioService.atualizarUsuario(id, usuario);
 
