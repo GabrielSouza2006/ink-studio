@@ -1,6 +1,9 @@
 package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
@@ -18,10 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
+import com.ink.studio.tattoo.inkstudiotattoo.model.Orcamentos;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.FuncionarioRepository;
+import com.ink.studio.tattoo.inkstudiotattoo.repositories.OrcamentosRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.FuncionarioService;
+import com.ink.studio.tattoo.inkstudiotattoo.service.OrcamentosService;
 
 @Controller
 @RequestMapping("/funcionarios")
@@ -31,6 +38,11 @@ public class FuncionarioController {
 	FuncionarioRepository funcionarRepository;
 	@Autowired
 	FuncionarioService funcionarioService;
+
+	@Autowired
+	OrcamentosRepository or;
+	@Autowired
+	OrcamentosService os;
 
 	// Cadastro de funcionario
 	@GetMapping("/cadastro")
@@ -148,7 +160,8 @@ public class FuncionarioController {
 	}
 
 	@PostMapping("/atualizar/{id}")
-	public String atualizarUsuario(@PathVariable Long id, Funcionario funcionario, @RequestParam(value = "file", required = false) MultipartFile file) {
+	public String atualizarUsuario(@PathVariable Long id, Funcionario funcionario,
+			@RequestParam(value = "file", required = false) MultipartFile file) {
 
 		funcionarioService.atualizarFuncionario(id, funcionario, file);
 
@@ -181,6 +194,49 @@ public class FuncionarioController {
 		funcionarioService.atualizarSenha(id, funcionario);
 
 		return "redirect:/funcionarios/login";
+	}
+
+	// -------------------------- Colsultar orcamentos --------------------------
+	@GetMapping("/orcamentos")
+	public ModelAndView listarOrcamentos(HttpSession session) {
+		// Recupera o objeto Funcionario logado a partir da sessão
+		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("userSession");
+
+		// Verifica se o Funcionario está presente na sessão
+		if (funcionarioLogado == null) {
+			// Caso o Funcionario não esteja presente, redireciona para uma página de erro
+			// ou login
+			return new ModelAndView("redirect:/login"); // Exemplo de redirecionamento
+		}
+
+		// Recupera o ID do Funcionario logado
+		Long idFuncionarioLogado = funcionarioLogado.getId(); // Ajuste aqui
+
+		// Filtra os orçamentos pelo ID do funcionário
+		Iterable<Orcamentos> orcamento = or.findByIdFuncionario(idFuncionarioLogado);
+
+		List<Orcamentos> orcamentos = StreamSupport.stream(orcamento.spliterator(), false)
+				.filter(f -> "PENDENTE".equals(f.getStatusOrcamento())).collect(Collectors.toList());
+
+		
+		// Cria a ModelAndView e passa os orçamentos filtrados
+		ModelAndView mv = new ModelAndView("lista-orcamentos-funcionario");
+		mv.addObject("orcamento", orcamento);
+		mv.addObject("orcamento", orcamentos);
+
+		return mv;
+	}
+	
+	@PostMapping("/deletar-orcamento/{id}")
+	public String excluirOrcamento(@PathVariable Long id) {
+		os.desativarOrcamento(id);
+		return "redirect:/funcionarios/orcamentos";
+	}
+	
+	@PostMapping("/ativar-orcamento/{id}")
+	public String ativarOrcamento(@PathVariable Long id) {
+		os.ativarOrcamento(id);
+		return "redirect:/funcionarios/orcamentos";
 	}
 
 }

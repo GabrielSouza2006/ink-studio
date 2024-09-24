@@ -51,6 +51,11 @@
 							<input type="hidden" name="_method" value="delete" />
 							<button type="submit">Reativar</button>
 						</form>
+						<form th:action="@{/admin/pendente-orcamento/{id}(id=${orcamento.id})}" method="post"
+							onsubmit="return confirm('Tem certeza que deseja mandar este orçamento para o funcionário?');">
+							<input type="hidden" name="_method" value="delete" />
+							<button type="submit">Pendente</button>
+						</form>
 					</td>
 				</tr>
 			</tbody>

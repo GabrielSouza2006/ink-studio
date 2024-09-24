@@ -17,19 +17,25 @@ public class OrcamentosService {
 	}
 
 	public Orcamentos gravarOrcamento(Orcamentos orcamento) {
-
+		
 		return or.save(orcamento);
 	}
 
 	public void desativarOrcamento(Long id) {
-		Orcamentos orcamento = or.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+		Orcamentos orcamento = or.findById(id).orElseThrow(() -> new RuntimeException("Orcamento não encontrado"));
 		orcamento.setStatusOrcamento("INATIVO");
 		or.save(orcamento);
 	}
 
 	public void ativarOrcamento(Long id) {
-		Orcamentos orcamento = or.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+		Orcamentos orcamento = or.findById(id).orElseThrow(() -> new RuntimeException("Orcamento não encontrado"));
 		orcamento.setStatusOrcamento("ATIVO");
+		or.save(orcamento);
+	}
+	
+	public void pendenteOrcamento(Long id) {
+		Orcamentos orcamento = or.findById(id).orElseThrow(() -> new RuntimeException("Orcamento não encontrado"));
+		orcamento.setStatusOrcamento("PENDENTE");
 		or.save(orcamento);
 	}
 

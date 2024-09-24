@@ -21,6 +21,7 @@ public class Orcamentos {
 	private long id;
 	private String cor;
 	private String horas;
+	private double valor;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	private String statusOrcamento;
@@ -32,6 +33,13 @@ public class Orcamentos {
 	private Usuario usuario;
 	
 	
+	
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
 	public String getStatusOrcamento() {
 		return statusOrcamento;
 	}

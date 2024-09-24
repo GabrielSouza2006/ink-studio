@@ -148,6 +148,12 @@ public class AdminController {
 		return "redirect:/admin/listar-orcamentos";
 	}
 	
+	@PostMapping("/pendente-orcamento/{id}")
+	public String pendenteOrcamentos(@PathVariable Long id) {
+		os.pendenteOrcamento(id);
+		return "redirect:/admin/listar-orcamentos";
+	}
+	
 	// ---------------- Mensagens
 		@GetMapping("/listar-mensagens")
 		public ModelAndView listarMensagem() {
