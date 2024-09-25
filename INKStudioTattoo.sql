@@ -1,55 +1,60 @@
-drop database INKstudiotattoo;
+-- Apagar e recriar o banco de dados
+DROP DATABASE IF EXISTS INKStudioTattoo;
+CREATE DATABASE INKStudioTattoo;
 
-create database INKStudioTattoo;
+-- Usar o banco de dados
+USE INKStudioTattoo;
 
-use INKStudioTattoo;
-
-create table Usuario(
-	id int PRIMARY KEY not null identity(1,1),
-	email varchar(50) not null,
-	senha varchar(20) not null,
-	telefone varchar(15) not null,
-	nascimento varchar(15),
-	nome varchar(60) not null,
-	cpf varchar(20),
-    fotoPerfil varBinary(MAX) null,
-	statusUsuario varchar(10) not null default 'ATIVO'
+-- Tabela Usuario
+CREATE TABLE Usuario (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    email VARCHAR(50) NOT NULL,
+    senha VARCHAR(20) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    nascimento VARCHAR(15),
+    nome VARCHAR(60) NOT NULL,
+    cpf VARCHAR(20),
+    fotoPerfil BLOB NULL,
+    statusUsuario VARCHAR(10) NOT NULL DEFAULT 'ATIVO'
 );
 
-create table Funcionario(
-	id int primary key not null identity(1,1),
-    nome varchar(50) not null,
-    nascimento varchar(15) not null,
-    descricao varchar(1000) not null,
-    servico varchar(20) not null,
-    cpf varchar(20) not null,
-    email varchar(50) not null,
-    telefone varchar(15) not null,
-    senha varchar(20) not null,
-    fotoPerfil varBinary(MAX) null,
-    fotoTattoo varBinary(MAX) null,
-	statusUsuario varchar(10) not null default 'ATIVO'
+-- Tabela Funcionario
+CREATE TABLE Funcionario (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    nascimento VARCHAR(15) NOT NULL,
+    descricao VARCHAR(1000) NOT NULL,
+    servico VARCHAR(20) NOT NULL,
+    cpf VARCHAR(20) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    senha VARCHAR(20) NOT NULL,
+    fotoPerfil BLOB NULL,
+    fotoTattoo BLOB NULL,
+    statusUsuario VARCHAR(10) NOT NULL DEFAULT 'ATIVO'
 );
 
+-- Tabela Orcamento
 CREATE TABLE Orcamento (
-    id INT identity(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     cor VARCHAR(10),
     horas VARCHAR(5),
-	valor decimal(10,1),
+    valor DECIMAL(10,1),
     data DATE,
     id_funcionario INT,
     id_usuario INT,
-	statusOrcamento VARCHAR(10) not null default 'ESPERANDO',
+    statusOrcamento VARCHAR(10) NOT NULL DEFAULT 'ESPERANDO',
     CONSTRAINT fk_funcionario FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id),
     CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
 
+-- Tabela Agenda
 CREATE TABLE Agenda (
-    id INT identity(1,1) PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     data DATE,
     horas VARCHAR(5),
     servico VARCHAR(15),
-    valor decimal(10,1),
+    valor DECIMAL(10,1),
     id_funcionario INT,
     id_usuario INT,
     id_orcamento INT,
@@ -57,9 +62,3 @@ CREATE TABLE Agenda (
     CONSTRAINT fk_usuario_agenda FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     CONSTRAINT fk_orcamento_agenda FOREIGN KEY (id_orcamento) REFERENCES Orcamento(id)
 );
-
-select * from Orcamento;
-
-ALTER TABLE orcamento
-ALTER COLUMN statusOrcamento  VARCHAR(10) NULL ;
-
