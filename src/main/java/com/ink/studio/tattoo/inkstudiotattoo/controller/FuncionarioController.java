@@ -206,7 +206,7 @@ public class FuncionarioController {
 		if (funcionarioLogado == null) {
 			// Caso o Funcionario não esteja presente, redireciona para uma página de erro
 			// ou login
-			return new ModelAndView("redirect:/login"); // Exemplo de redirecionamento
+			return new ModelAndView("redirect:/funcionarios/login"); // Exemplo de redirecionamento
 		}
 
 		// Recupera o ID do Funcionario logado
@@ -238,5 +238,35 @@ public class FuncionarioController {
 		os.ativarOrcamento(id);
 		return "redirect:/funcionarios/orcamentos";
 	}
+	
+	// -------------------------- Colsultar agenda --------------------------
+	@GetMapping("/agenda")
+	public ModelAndView listarAgenda(HttpSession session) {
+		// Recupera o objeto Funcionario logado a partir da sessão
+		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("userSession");
 
+		// Verifica se o Funcionario está presente na sessão
+		if (funcionarioLogado == null) {
+			// Caso o Funcionario não esteja presente, redireciona para uma página de erro
+			// ou login
+			return new ModelAndView("redirect:/funcionarios/login"); // Exemplo de redirecionamento
+		}
+
+		// Recupera o ID do Funcionario logado
+		Long idFuncionarioLogado = funcionarioLogado.getId(); // Ajuste aqui
+
+		// Filtra os orçamentos pelo ID do funcionário
+		Iterable<Orcamentos> orcamento = or.findByIdFuncionario(idFuncionarioLogado);
+
+		List<Orcamentos> orcamentos = StreamSupport.stream(orcamento.spliterator(), false)
+				.filter(f -> "ATIVO".equals(f.getStatusOrcamento())).collect(Collectors.toList());
+
+		
+		// Cria a ModelAndView e passa os orçamentos filtrados
+		ModelAndView mv = new ModelAndView("agenda-funcionario");
+		mv.addObject("orcamento", orcamento);
+		mv.addObject("orcamento", orcamentos);
+
+		return mv;
+	}
 }
