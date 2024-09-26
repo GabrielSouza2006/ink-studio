@@ -62,3 +62,12 @@ CREATE TABLE Agenda (
     CONSTRAINT fk_usuario_agenda FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     CONSTRAINT fk_orcamento_agenda FOREIGN KEY (id_orcamento) REFERENCES Orcamento(id)
 );
+
+-- Fale Conosco
+CREATE table faleConosco(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) not null,
+    email VARCHAR(50) not null,
+    tipo VARCHAR(50) not null,
+    descricao varchar(100) not null
+)

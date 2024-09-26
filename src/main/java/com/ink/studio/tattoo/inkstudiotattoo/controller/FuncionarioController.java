@@ -108,18 +108,18 @@ public class FuncionarioController {
 
 	@PostMapping("/login")
 	public String efetuarLogin(Model model, Funcionario funcionario, HttpSession session) {
-		Funcionario userSession = this.funcionarRepository.login(funcionario.getCpf(), funcionario.getSenha());
+		Funcionario funcSession = this.funcionarRepository.login(funcionario.getCpf(), funcionario.getSenha());
 
-		if (userSession != null) {
+		if (funcSession != null) {
 			// Verifica o status do usuário
-			if ("INATIVO".equals(userSession.getStatusUsuario())) {
+			if ("INATIVO".equals(funcSession.getStatusUsuario())) {
 				model.addAttribute("erro", "Essa conta foi deletada!");
 				return "login-funcionario";
 			}
 
 			// Se o status for ativo, inicia a sessão do usuário
-			session.setAttribute("userSession", userSession);
-			model.addAttribute("usuario", userSession);
+			session.setAttribute("funcSession", funcSession);
+			model.addAttribute("usuario", funcSession);
 			return "pag-principal-func";
 		}
 		model.addAttribute("erro", "usuario ou senha inválidos");
@@ -176,11 +176,11 @@ public class FuncionarioController {
 
 	@PostMapping("/trocar-senha")
 	public String confirirParaTrocarSenha(Model model, Funcionario funcionario, HttpSession session) {
-		Funcionario userSession = this.funcionarRepository.trocarSenha(funcionario.getCpf(), funcionario.getEmail());
+		Funcionario funcSession = this.funcionarRepository.trocarSenha(funcionario.getCpf(), funcionario.getEmail());
 
-		if (userSession != null) {
-			session.setAttribute("userSession", userSession);
-			model.addAttribute("funcionario", userSession);
+		if (funcSession != null) {
+			session.setAttribute("funcSession", funcSession);
+			model.addAttribute("funcionario", funcSession);
 
 			return "trocar-senha-funcionario";
 		}
@@ -200,7 +200,7 @@ public class FuncionarioController {
 	@GetMapping("/orcamentos")
 	public ModelAndView listarOrcamentos(HttpSession session) {
 		// Recupera o objeto Funcionario logado a partir da sessão
-		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("userSession");
+		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcSession");
 
 		// Verifica se o Funcionario está presente na sessão
 		if (funcionarioLogado == null) {
@@ -243,7 +243,7 @@ public class FuncionarioController {
 	@GetMapping("/agenda")
 	public ModelAndView listarAgenda(HttpSession session) {
 		// Recupera o objeto Funcionario logado a partir da sessão
-		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("userSession");
+		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcSession");
 
 		// Verifica se o Funcionario está presente na sessão
 		if (funcionarioLogado == null) {

@@ -47,7 +47,7 @@
 
     <main>
         <div class="container-editar-funcionario mx-5 my-5 p-5" style="margin-top: 300px !important;">
-            <form th:action="@{/funcionarios/atualizar/{id}(id=${session.userSession.id})}"
+            <form th:action="@{/funcionarios/atualizar/{id}(id=${session.funcSession.id})}"
                 enctype="multipart/form-data" th:object="${funcionario}" method="post">
 
                 <h3>Digite seu email:</h3>
