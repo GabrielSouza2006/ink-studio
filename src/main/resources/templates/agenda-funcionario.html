@@ -51,8 +51,7 @@
             </thead>
             <tbody>
                 <tr th:each="orcamento: ${orcamento}">
-                    <td scope="row" th:text="${orcamento.id}">
-                        </th>
+                    <td scope="row" th:text="${orcamento.id}"></td>
                     <td th:text="${orcamento.usuario.nome}"></td>
                     <td th:text="${session.funcSession.servico}"></td>
                     <td th:text="${orcamento.usuario.telefone}"></td>

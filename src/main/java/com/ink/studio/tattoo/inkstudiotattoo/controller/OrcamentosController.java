@@ -44,6 +44,7 @@ public class OrcamentosController {
 		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
 		
 		orcamento.setUsuario(usuarioLogado);
+		orcamento.setStatusOrcamento("PENDENTE");
 		
 		os.gravarOrcamento(orcamento);
 

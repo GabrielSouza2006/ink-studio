@@ -1,5 +1,9 @@
 package com.ink.studio.tattoo.inkstudiotattoo.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
+import com.ink.studio.tattoo.inkstudiotattoo.model.Orcamentos;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
+import com.ink.studio.tattoo.inkstudiotattoo.repositories.OrcamentosRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.UsuarioRepository;
 import com.ink.studio.tattoo.inkstudiotattoo.service.UsuarioService;
 
@@ -23,6 +31,9 @@ public class UsuarioController {
 	UsuarioRepository usuarioRepository;
 	@Autowired
 	UsuarioService usuarioService;
+
+	@Autowired
+	OrcamentosRepository or;
 
 	// -------------------------- Cadastro --------------------------
 	@GetMapping("/cadastro")
@@ -91,7 +102,6 @@ public class UsuarioController {
 		return "Perfil-cliente";
 	}
 
-
 	@GetMapping("/editar-cliente")
 	public String paginaEditarCliente() {
 		return "Editar-cliente";
@@ -125,7 +135,7 @@ public class UsuarioController {
 		if (userSession != null) {
 			session.setAttribute("userSession", userSession);
 			model.addAttribute("usuario", userSession);
-			
+
 			return "trocar-senha";
 		}
 		model.addAttribute("erro", "CPF e senha não correspondem!");
@@ -134,9 +144,34 @@ public class UsuarioController {
 
 	@PostMapping("/atualizar-senha/{id}")
 	public String atualizarSenha(@PathVariable Long id, Usuario usuario) {
-		
+
 		usuarioService.atualizarSenha(id, usuario);
 
 		return "redirect:/usuarios/login";
 	}
+
+	// -------------------------- Colsultar agenda --------------------------
+	@GetMapping("/minha-agenda")
+	public ModelAndView listarAgenda(HttpSession session) {
+		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
+
+		if (usuarioLogado == null) {
+			return new ModelAndView("redirect:/usuarios/login");
+		}
+
+		Long idUsuarioLogado = usuarioLogado.getId();
+
+		Iterable<Orcamentos> orcamento = or.findByIdUsuariorio(idUsuarioLogado);
+
+		List<Orcamentos> orcamentos = StreamSupport.stream(orcamento.spliterator(), false)
+				.filter(f -> "ATIVO".equals(f.getStatusOrcamento())).collect(Collectors.toList());
+
+		// Cria a ModelAndView e passa os orçamentos filtrados
+		ModelAndView mv = new ModelAndView("agenda-usuario");
+		mv.addObject("orcamento", orcamento);
+		mv.addObject("orcamento", orcamentos);
+
+		return mv;
+	}
+
 }
