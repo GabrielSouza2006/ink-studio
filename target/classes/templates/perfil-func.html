@@ -27,7 +27,7 @@
             <div class="links">
                 <div class="as">
                     <a th:href="@{/funcionarios/pagina-principal}">Página principal</a>
-                    <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
+                    <a th:href="@{/funcionarios/orcamentos}">Orçamentos</a>
                     <a th:href="@{/funcionarios/agenda}">Agenda</a>
                 </div>
 
@@ -49,30 +49,30 @@
             <div class="info-funcionario d-flex justify-content-center flex-column mt-5 mx-5" width="800">
                 <div class="d-flex justify-content-center flex-row foto-funcionario">
                     <img class="mb-4"
-                        th:src="${session.userSession.fotoPerfil} ? @{${'/funcionarios/showImage/'+ session.userSession.id}}"
+                        th:src="${session.funcSession.fotoPerfil} ? @{${'/funcionarios/showImage/'+ session.funcSession.id}}"
                         style="max-width: 300px;" alt="Imagem do Funcionário" />
                 </div>
 
                 <div class="d-flex flex-row">
                     <h3>Nome:</h3>
-                    <h2 class="mx-2" th:text="${session.userSession.nome}"></h2>
+                    <h2 class="mx-2" th:text="${session.funcSession.nome}"></h2>
                 </div>
                 <div class="d-flex flex-row">
                     <h3>telefone:</h3>
-                    <h2 class="mx-2" th:text="${session.userSession.telefone}"></h2>
+                    <h2 class="mx-2" th:text="${session.funcSession.telefone}"></h2>
                 </div>
                 <div class="d-flex flex-row">
                     <h3>E-mail:</h3>
-                    <h2 class="mx-2" th:text="${session.userSession.email}"></h2>
+                    <h2 class="mx-2" th:text="${session.funcSession.email}"></h2>
                 </div>
                 <div class="d-flex flex-column">
                     <h3>Descrição:</h3>
-                    <h2 class="mx-2" th:text="${session.userSession.descricao}"></h2>
+                    <h2 class="mx-2" th:text="${session.funcSession.descricao}"></h2>
                 </div>
             </div>
 
             <div class="mt-5 mb-5 d-flex justify-content-center flex-row btns-funcionario">
-                <form th:action="@{/funcionarios/deletar-conta/{id}(id=${session.userSession.id})}" method="post"
+                <form th:action="@{/funcionarios/deletar-conta/{id}(id=${session.funcSession.id})}" method="post"
                     onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
                     <input type="hidden" name="_method" value="delete" />
                     <button type="submit" class="btn-danger">Deletar conta</button>

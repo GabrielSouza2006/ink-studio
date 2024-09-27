@@ -47,7 +47,7 @@
     <main>
         <div class="container-recuperar-senha">
 
-            <form th:action="@{/funcionarios/atualizar-senha/{id}(id=${session.userSession.id})}" th:object="${funcionario}"
+            <form th:action="@{/funcionarios/atualizar-senha/{id}(id=${session.funcSession.id})}" th:object="${funcionario}"
                 method="post">
                 <img src="/imagens/LogoINK.png" alt="">
                 <h1>Recuperar senha</h1>

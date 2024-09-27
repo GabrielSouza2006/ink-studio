@@ -55,16 +55,16 @@ public class AdminController {
 
 	@PostMapping("/login")
 	public String login(Model model, Usuario usuario, HttpSession session) {
-		Usuario userSession = this.ur.loginAdmin(usuario.getEmail(), usuario.getSenha());
+		Usuario admSession = this.ur.loginAdmin(usuario.getEmail(), usuario.getSenha());
 
-		if (userSession != null) {
+		if (admSession != null) {
 			// Verifica o status do usuário
-			if ("INATIVO".equals(userSession.getStatusUsuario())) {
+			if ("INATIVO".equals(admSession.getStatusUsuario())) {
 				model.addAttribute("erro", "Essa conta foi deletada!");
 				return "login-admin";
-			} else if ("ADMIN".equals(userSession.getStatusUsuario())) {
-				session.setAttribute("userSession", userSession);
-				model.addAttribute("funcionario", userSession);
+			} else if ("ADMIN".equals(admSession.getStatusUsuario())) {
+				session.setAttribute("admSession", admSession);
+				model.addAttribute("funcionario", admSession);
 				return "redirect:/admin/pagina-principal";
 			}
 		}
