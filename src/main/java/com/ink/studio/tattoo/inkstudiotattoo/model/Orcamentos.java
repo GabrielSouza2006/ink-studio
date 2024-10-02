@@ -21,6 +21,7 @@ public class Orcamentos {
 	private long id;
 	private String cor;
 	private String horas;
+	private String hora;
 	private double valor;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
@@ -34,6 +35,12 @@ public class Orcamentos {
 	
 	
 	
+	public String getHora() {
+		return hora;
+	}
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
 	public double getValor() {
 		return valor;
 	}

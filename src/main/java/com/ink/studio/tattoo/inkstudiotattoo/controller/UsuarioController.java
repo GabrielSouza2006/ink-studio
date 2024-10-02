@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ink.studio.tattoo.inkstudiotattoo.model.Funcionario;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Orcamentos;
 import com.ink.studio.tattoo.inkstudiotattoo.model.Usuario;
 import com.ink.studio.tattoo.inkstudiotattoo.repositories.OrcamentosRepository;
@@ -173,5 +172,7 @@ public class UsuarioController {
 
 		return mv;
 	}
-
+	
+	// -------------------------- MOBILE --------------------------
+	
 }

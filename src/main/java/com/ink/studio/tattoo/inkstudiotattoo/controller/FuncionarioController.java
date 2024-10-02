@@ -136,14 +136,36 @@ public class FuncionarioController {
 
 	// Página principal controller
 	@GetMapping("/pagina-principal")
-	public String paginaPrincipal() {
+	public String paginaPrincipal(HttpSession session) {
+
+		// Recupera o objeto Funcionario logado a partir da sessão
+		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcSession");
+
+		// Verifica se o Funcionario está presente na sessão
+		if (funcionarioLogado == null) {
+			// Caso o Funcionario não esteja presente, redireciona para uma página de erro
+			// ou login
+			return ("redirect:/funcionarios/login"); // Exemplo de redirecionamento
+		}
+
 		return "pag-principal-func";
 
 	}
 
 	// Perfil funcionario
 	@GetMapping("/perfil")
-	public String perfilFuncionario() {
+	public String perfilFuncionario(HttpSession session) {
+
+		// Recupera o objeto Funcionario logado a partir da sessão
+		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcSession");
+
+		// Verifica se o Funcionario está presente na sessão
+		if (funcionarioLogado == null) {
+			// Caso o Funcionario não esteja presente, redireciona para uma página de erro
+			// ou login
+			return ("redirect:/funcionarios/login"); // Exemplo de redirecionamento
+		}
+
 		return "perfil-func";
 	}
 
@@ -198,7 +220,10 @@ public class FuncionarioController {
 
 	// -------------------------- Colsultar orcamentos --------------------------
 	@GetMapping("/orcamentos")
-	public ModelAndView listarOrcamentos(HttpSession session) {
+	public ModelAndView listarOrcamentos(HttpSession session, Model model) {
+
+		model.addAttribute("orcamentos", new Orcamentos());
+
 		// Recupera o objeto Funcionario logado a partir da sessão
 		Funcionario funcionarioLogado = (Funcionario) session.getAttribute("funcSession");
 
@@ -218,7 +243,6 @@ public class FuncionarioController {
 		List<Orcamentos> orcamentos = StreamSupport.stream(orcamento.spliterator(), false)
 				.filter(f -> "PENDENTE".equals(f.getStatusOrcamento())).collect(Collectors.toList());
 
-		
 		// Cria a ModelAndView e passa os orçamentos filtrados
 		ModelAndView mv = new ModelAndView("lista-orcamentos-funcionario");
 		mv.addObject("orcamento", orcamento);
@@ -226,19 +250,19 @@ public class FuncionarioController {
 
 		return mv;
 	}
-	
+
 	@PostMapping("/deletar-orcamento/{id}")
 	public String excluirOrcamento(@PathVariable Long id) {
 		os.desativarOrcamento(id);
 		return "redirect:/funcionarios/orcamentos";
 	}
-	
+
 	@PostMapping("/ativar-orcamento/{id}")
-	public String ativarOrcamento(@PathVariable Long id) {
-		os.ativarOrcamento(id);
+	public String ativarOrcamento(@PathVariable Long id, Orcamentos orcamentos) {
+		os.ativarOrcamentoFunc(id, orcamentos);
 		return "redirect:/funcionarios/orcamentos";
 	}
-	
+
 	// -------------------------- Colsultar agenda --------------------------
 	@GetMapping("/agenda")
 	public ModelAndView listarAgenda(HttpSession session) {
@@ -261,7 +285,6 @@ public class FuncionarioController {
 		List<Orcamentos> orcamentos = StreamSupport.stream(orcamento.spliterator(), false)
 				.filter(f -> "ATIVO".equals(f.getStatusOrcamento())).collect(Collectors.toList());
 
-		
 		// Cria a ModelAndView e passa os orçamentos filtrados
 		ModelAndView mv = new ModelAndView("agenda-funcionario");
 		mv.addObject("orcamento", orcamento);

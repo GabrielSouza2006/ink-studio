@@ -51,10 +51,10 @@
             <h1>Recuperar senha</h1>
             <div class="codigo">
                 <h2>Digite seu CPF e email associado a conta</h2>
-                <label for="cpf">CPF:</label>
+                <label for="cpf">CPF:</label> <br>
                 <input type="text" name="cpf" th:text="${cpf}" required> <br>
 
-                <label for="cpf">Email:</label>
+                <label for="cpf">Email:</label> <br>
                 <input type="email" name="email" th:text="${email}" required>
             </div>
             <div th:if="${erro != null}" th:text="${erro}" role="alert" style="color: red;"></div>
