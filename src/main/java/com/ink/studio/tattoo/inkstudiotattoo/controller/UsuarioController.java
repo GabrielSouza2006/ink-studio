@@ -83,7 +83,14 @@ public class UsuarioController {
 	}
 
 	@GetMapping("/pagina-principal")
-	public String paginaPrincipal() {
+	public String paginaPrincipal(HttpSession session) {
+
+		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
+
+		if (usuarioLogado == null) {
+			return ("redirect:/usuarios/login");
+		}
+		
 		return "pagina-principal";
 	}
 
@@ -97,7 +104,14 @@ public class UsuarioController {
 
 	// -------------------------- Alterar Usuario --------------------------
 	@GetMapping("/perfil")
-	public String perfilCliente() {
+	public String perfilCliente(HttpSession session) {
+		
+		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
+
+		if (usuarioLogado == null) {
+			return ("redirect:/usuarios/login");
+		}
+
 		return "Perfil-cliente";
 	}
 
@@ -172,7 +186,7 @@ public class UsuarioController {
 
 		return mv;
 	}
-	
+
 	// -------------------------- MOBILE --------------------------
-	
+
 }
