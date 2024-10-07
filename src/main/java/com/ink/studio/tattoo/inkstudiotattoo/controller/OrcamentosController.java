@@ -27,7 +27,13 @@ public class OrcamentosController {
 	FuncionarioRepository fr;
 
 	@GetMapping("/cadastro")
-	public String cadastro(Model model) {
+	public String cadastro(Model model, HttpSession session) {
+
+		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
+
+		if (usuarioLogado == null) {
+			return ("redirect:/usuarios/login");
+		}
 
 		Iterable<Funcionario> func = fr.findAll();
 
@@ -42,15 +48,15 @@ public class OrcamentosController {
 	public String create(@ModelAttribute Orcamentos orcamento, HttpSession session) {
 
 		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
-		
+
 		orcamento.setUsuario(usuarioLogado);
 		orcamento.setStatusOrcamento("PENDENTE");
-		
+
 		os.gravarOrcamento(orcamento);
 
 		return "redirect:/orcamentos/obrigado";
 	}
-	
+
 	@GetMapping("obrigado")
 	public String obrigado() {
 		return "obrigado";
