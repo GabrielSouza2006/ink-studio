@@ -16,6 +16,30 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <title>Editar perfil</title>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const telefoneInput = document.getElementById('telefone');
+
+            telefoneInput.addEventListener('input', (e) => {
+                e.target.value = formatarTelefone(e.target.value);
+            });
+
+            function formatarTelefone(value) {
+                // Remove tudo o que não é dígito
+                value = value.replace(/\D/g, '');
+                // Limita a 11 caracteres
+                value = value.substring(0, 11);
+                // Adiciona a máscara
+                if (value.length <= 10) {
+                    return value.replace(/(\d{2})(\d{0,5})/, '($1) $2').trim();
+                } else {
+                    return value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3').trim();
+                }
+            }
+        });
+
+    </script>
 </head>
 
 <body style="background-color: #000;">
@@ -34,7 +58,7 @@
 
                 <div class="redes">
                     <div class="as2">
-                        <a href="https://www.instagram.com/">
+                        <a href="https://www.instagram.com/inkstudio.tatto?igsh=MWhodXNjbWc0ODhkeQ%3D%3D&utm_source=qr">
                             <img src="/imagens/insta.png" width="50px" height="50px"></a>
                         <a href="https://www.facebook.com">
                             <img src="/imagens/face.png" width="50px" height="50px"></a>

@@ -1,5 +1,7 @@
 package com.ink.studio.tattoo.inkstudiotattoo.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,5 +19,6 @@ public interface OrcamentosRepository extends JpaRepository<Orcamentos, Long>{
 	
 	@Query(value = "select * from orcamento where id_usuario = :id_usuario", nativeQuery = true)
     Iterable<Orcamentos> findByIdUsuariorio(Long id_usuario);
-	
+
+	List<Orcamentos>findAllByUsuarioAndStatusOrcamento(Usuario usuario, String statusOrcamento);
 }

@@ -24,7 +24,7 @@
             </div>
             <div class="redes">
                 <div class="as2">
-                    <a href="https://www.instagram.com/">
+                    <a href="https://www.instagram.com/inkstudio.tatto?igsh=MWhodXNjbWc0ODhkeQ%3D%3D&utm_source=qr">
                         <img src="/imagens/insta.png" width="50px" height="50px"></a>
                     <a href="https://www.facebook.com">
                         <img src="/imagens/face.png" width="50px" height="50px"></a>
@@ -44,7 +44,8 @@
                     <th scope="col">Servico</th>
                     <th scope="col">Telefone</th>
                     <th scope="col">Data</th>
-                    <th scope="col">Horas</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Tempo em horas</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Ações</th>
                 </tr>
@@ -56,6 +57,7 @@
                     <td th:text="${session.funcSession.servico}"></td>
                     <td th:text="${orcamento.usuario.telefone}"></td>
                     <td th:text="${orcamento.data}"></td>
+                    <td th:text="${orcamento.hora}"></td>
                     <td th:text="${orcamento.horas}"></td>
                     <td th:text="${orcamento.valor}"></td>
                     <td class="d-flex flex-row justify-content-start" style="gap: 10px;">
