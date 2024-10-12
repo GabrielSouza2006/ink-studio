@@ -1,8 +1,11 @@
-*{
+@import url('https://fonts.cdnfonts.com/css/cloister-black');
+@import url('https://fonts.cdnfonts.com/css/great-vibes');
+
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
     margin: 0;
     background-color: rgb(11, 11, 11);
 }
@@ -10,30 +13,29 @@ body{
 
 /* MENU */
 
-nav li{
+nav li {
     display: inline-block;
     font-size: 18px;
     width: 180px;
     text-align: center;
     margin-right: 5px
-
 }
 
-nav li a{
+nav li a {
     display: inline-block;
     color: white;
     text-decoration: none;
     padding: 30px;
     width: 220px;
-    }
+}
 
-nav li a:hover{
+nav li a:hover {
     background-color: black;
     color: white;
     text-decoration: underline;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     position: absolute;
     display: none;
     font-size: 30px;
@@ -42,20 +44,20 @@ nav li a:hover{
     background-color: black;
 }
 
-.dropdown img{
+.dropdown img {
     width: 50px;
     height: 50px;
 }
 
-.dropdown-menu a{
+.dropdown-menu a {
     display: block;
 }
 
-.dropdown:hover .dropdown-menu{
+.dropdown:hover .dropdown-menu {
     display: block;
 }
 
-.menu{
+.menu {
     display: flex;
     height: 120px;
     justify-content: center;
@@ -64,60 +66,63 @@ nav li a:hover{
     background: black;
 }
 
-.logo-cabecalho{
+.logo-cabecalho {
     display: flex;
     flex: 70%;
-    
+
 }
 
-.plogo{
+.plogo {
     color: white;
     display: flex;
     align-items: center;
     font-style: oblique;
     font-size: 35px;
-    font-family: 'Great Vibes', sans-serif;                                               
+    font-family: 'Great Vibes', sans-serif;
 }
 
-.links{
+.links {
     display: flex;
     font-size: 30px;
     flex: 80%;
     justify-content: flex-end;
-    
+
 }
 
-.links a{
+.links a {
     padding: 15px;
     text-decoration: none;
     color: white;
-    
+
 }
-.as{
+
+.as {
     margin-top: 30px;
 }
 
-.links a:hover{
+.links a:hover {
     text-decoration: underline;
 }
 
-.redes{
+.redes {
     display: flex;
     align-items: center;
     margin-right: 30px;
     margin-left: 30px;
 }
 
-.redes a{
+.redes a {
     background: none;
     margin: 0;
     border: 0;
 }
-.as2{
+
+.as2 {
     margin-top: 25px;
 }
+
 /*-----FOOTER-----*/
-footer{
+footer {
     background-color: black;
     color: white;
     font-size: 20px;
@@ -125,24 +130,24 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.rodape{
+.rodape {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start ;
+    align-items: flex-start;
 }
 
-#suporte-link{
+#suporte-link {
     color: white;
     font-size: 20px;
     text-decoration: underline;
 }
 
-.inf-contato{
+.inf-contato {
     margin-right: 100px;
 }
 
-.false-footer{
+.false-footer {
     width: 300px;
     height: 300px;
 }

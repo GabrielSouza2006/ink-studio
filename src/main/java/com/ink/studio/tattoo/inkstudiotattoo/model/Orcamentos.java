@@ -19,9 +19,10 @@ public class Orcamentos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	private double valor;
 	private String cor;
 	private String horas;
+	private String hora;
+	private double valor;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	private String statusOrcamento;
@@ -33,6 +34,19 @@ public class Orcamentos {
 	private Usuario usuario;
 	
 	
+	
+	public String getHora() {
+		return hora;
+	}
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+	public double getValor() {
+		return valor;
+	}
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
 	public String getStatusOrcamento() {
 		return statusOrcamento;
 	}
@@ -62,12 +76,6 @@ public class Orcamentos {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public double getValor() {
-		return valor;
-	}
-	public void setValor(double valor) {
-		this.valor = valor;
 	}
 	public String getCor() {
 		return cor;

@@ -27,13 +27,13 @@
             <div class="links">
                 <div class="as">
                     <a th:href="@{/funcionarios/pagina-principal}">Página principal</a>
-                    <a th:href="@{/orcamentos/cadastro}">Orçamentos</a>
+                    <a th:href="@{/funcionarios/orcamentos}">Orçamentos</a>
                     <a th:href="@{/funcionarios/agenda}">Agenda</a>
                 </div>
 
                 <div class="redes">
                     <div class="as2">
-                        <a href="https://www.instagram.com/">
+                        <a href="https://www.instagram.com/inkstudio.tatto?igsh=MWhodXNjbWc0ODhkeQ%3D%3D&utm_source=qr">
                             <img src="/imagens/insta.png" width="50px" height="50px"></a>
                         <a href="https://www.facebook.com">
                             <img src="/imagens/face.png" width="50px" height="50px"></a>
@@ -51,10 +51,10 @@
             <h1>Recuperar senha</h1>
             <div class="codigo">
                 <h2>Digite seu CPF e email associado a conta</h2>
-                <label for="cpf">CPF:</label>
+                <label for="cpf">CPF:</label> <br>
                 <input type="text" name="cpf" th:text="${cpf}" required> <br>
 
-                <label for="cpf">Email:</label>
+                <label for="cpf">Email:</label> <br>
                 <input type="email" name="email" th:text="${email}" required>
             </div>
             <div th:if="${erro != null}" th:text="${erro}" role="alert" style="color: red;"></div>
