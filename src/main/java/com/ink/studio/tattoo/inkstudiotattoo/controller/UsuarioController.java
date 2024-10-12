@@ -90,7 +90,7 @@ public class UsuarioController {
 		if (usuarioLogado == null) {
 			return ("redirect:/usuarios/login");
 		}
-		
+
 		return "pagina-principal";
 	}
 
@@ -105,7 +105,7 @@ public class UsuarioController {
 	// -------------------------- Alterar Usuario --------------------------
 	@GetMapping("/perfil")
 	public String perfilCliente(HttpSession session) {
-		
+
 		Usuario usuarioLogado = (Usuario) session.getAttribute("userSession");
 
 		if (usuarioLogado == null) {
@@ -186,7 +186,4 @@ public class UsuarioController {
 
 		return mv;
 	}
-
-	// -------------------------- MOBILE --------------------------
-
 }

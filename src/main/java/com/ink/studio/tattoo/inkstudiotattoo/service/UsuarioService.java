@@ -1,5 +1,8 @@
 package com.ink.studio.tattoo.inkstudiotattoo.service;
 
+import java.util.NoSuchElementException;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +58,28 @@ public class UsuarioService {
 		usuario.setStatusUsuario("ATIVO");
 		ur.save(usuario);
 	}
+	
+	public Usuario findByEmailAndSenha(String email, String senha) {
+        return ur.findByEmailAndSenha(email, senha);
+    }
 
+    public Optional<Usuario> findById(Long id) {
+        return ur.findById(id);
+    }
+    
+    public Usuario loginMobile(String email, String senha) {
+        // Verifica se o e-mail existe no banco de dados
+        if (!ur.existsByEmail(email)) {
+            throw new NoSuchElementException("E-mail não cadastrado.");
+        }
+
+        // Tenta fazer login com e-mail e senha
+        Optional<Usuario> usuarioOpt = Optional.of(ur.findByEmailAndSenha(email, senha));
+        if (usuarioOpt.isEmpty()) {
+            throw new IllegalArgumentException("Senha inválida.");
+        }
+
+        // Retorna o usuário autenticado
+        return usuarioOpt.get();
+    }
 }

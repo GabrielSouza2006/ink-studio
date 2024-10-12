@@ -24,6 +24,10 @@ CREATE TABLE Usuario (
 );
 GO
 
+INSERT INTO Usuario (email, senha, telefone, nascimento, nome, cpf, statusUsuario)
+VALUES ('admin@admin.com', 'admin123', '1234567890', '???', 'Administrador', '???', 'ADMIN');
+
+
 -- Tabela Funcionario
 CREATE TABLE Funcionario (
     id INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
@@ -45,6 +49,7 @@ GO
 CREATE TABLE Orcamento (
     id INT PRIMARY KEY IDENTITY(1,1),
     cor NVARCHAR(10),
+	hora NVARCHAR(5),
     horas NVARCHAR(5),
     valor DECIMAL(10, 1),
     data DATE,
@@ -53,22 +58,6 @@ CREATE TABLE Orcamento (
     statusOrcamento NVARCHAR(10) NOT NULL DEFAULT 'ESPERANDO',
     CONSTRAINT fk_funcionario FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id),
     CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
-);
-GO
-
--- Tabela Agenda
-CREATE TABLE Agenda (
-    id INT PRIMARY KEY IDENTITY(1,1),
-    data DATE,
-    horas NVARCHAR(5),
-    servico NVARCHAR(15),
-    valor DECIMAL(10, 1),
-    id_funcionario INT,
-    id_usuario INT,
-    id_orcamento INT,
-    CONSTRAINT fk_funcionario_agenda FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id),
-    CONSTRAINT fk_usuario_agenda FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
-    CONSTRAINT fk_orcamento_agenda FOREIGN KEY (id_orcamento) REFERENCES Orcamento(id)
 );
 GO
 
